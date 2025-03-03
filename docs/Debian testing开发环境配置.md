@@ -43,7 +43,7 @@ sudo apt update && sudo apt upgrade -y
 1.卸载无用软件
 
 ```shell
-sudo apt remove -y gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar gnome-video-effects gnome-chess simple-scan five-or-more four-in-a-row hitori gnome-chess im-config gnome-klotski lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop tali gnome-taquin gnome-tetravex gnome-text-editor transmission-gtk evolution synaptic totem gnome-software gnome-tour gnome-connections malcontent vim-tiny libreoffice-* && sudo apt autoremove -y
+sudo apt remove -y evolution gnome-contacts gnome-tour libreoffice-gtk3 libreoffice-uiconfig-draw simple-scan evolution-ews gnome-core gnome-weather libreoffice-help-common libreoffice-uiconfig-impress task-gnome-desktop evolution-plugin-bogofilter gnome-maps im-config evolution-plugin-pstimport gnome-music libreoffice-base-core libreoffice-impress libreoffice-uiconfig-writer totem-plugins evolution-plugins gnome-software libreoffice-calc libreoffice-math libreoffice-writer vim-tiny gnome gnome-software-plugin-deb libreoffice-common libreoffice-style-colibre malcontent gnome-calendar gnome-software-plugin-fwupd libreoffice-core libreoffice-style-elementary malcontent-gui gnome-clocks gnome-sound-recorder libreoffice-draw libreoffice-uiconfig-calc python3-uno gnome-connections gnome-text-editor libreoffice-gnome libreoffice-uiconfig-common shotwell xterm && sudo apt autoremove -y
 ```
 
 2.安装字体库

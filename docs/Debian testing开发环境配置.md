@@ -184,3 +184,11 @@ sudo fc-cache -f && fc-cache -f
 ```shell
 sudo cp ~/Projects/dev-env/config/.vimrc /root/ && cp ~/Projects/dev-env/config/.vimrc ~/
 ```
+
+## 9. 常用工具
+
+1.PDF工具`pdftk-java`
+
+```shell
+sudo apt install -y pdftk-java
+```

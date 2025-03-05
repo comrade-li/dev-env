@@ -48,7 +48,7 @@ apt update && apt upgrade -y
 4.管理软件包
 
 ```shell
-apt install -y sudo vim git build-essential curl openssh-server cmake ninja-build && apt remove -y vim-tiny && apt autoremove -y
+apt install -y sudo vim git build-essential curl openssh-server cmake autoconf ninja-build && apt remove -y vim-tiny && apt autoremove -y
 ```
 
 ### 1.3 配置vim
@@ -123,9 +123,7 @@ git config --global user.email "comrade.lijing@gmail.com" && git config --global
 
 ```shell
 echo '
-JAVA_HOME=~/.softwares/java/current
+export JAVA_HOME=/usr/local/java/current
 
-PATH=$PATH:$JAVA_HOME/bin
-
-export PATH JAVA_HOME' | sudo tee -a /etc/profile
+export PATH=$PG_HOME/bin:$JAVA_HOME:$PATH' | sudo tee -a /etc/profile
 ```

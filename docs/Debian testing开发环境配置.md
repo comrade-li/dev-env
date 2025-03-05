@@ -61,7 +61,7 @@ sudo apt install -y yaru-theme-gnome-shell yaru-theme-gtk yaru-theme-icon yaru-t
 4.安装基础环境
 
 ```shell
-sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake ninja-build tcl tk tcl-dev tk-dev
+sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk tcl-dev tk-dev gnome-tweaks gnome-shell-extensions gnome-disk-utility gnome-calculator gnome-system-monitor gnome-shell-extension-user-theme
 ```
 
 5.安装llvm
@@ -96,7 +96,26 @@ sudo chgrp wireshark /usr/bin/dumpcap && sudo chmod 4755 /usr/bin/dumpcap && sud
 sudo apt install -y vlc
 ```
 
-## 4. 配置SSH和git
+## 4. 配置环境变量
+
+```shell
+echo '
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+
+JAVA_HOME=~/.softwares/java/current
+GRADLE_HOME=~/.softwares/gradle/current
+MAVEN_HOME=~/.softwares/maven/current
+JMETER_HOME=~/.softwares/jmeter
+VISUALVM_HOME=~/.softwares/visualvm
+
+PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
+
+export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/..profile
+```
+
+## 5. 配置SSH和git
 
 1.配置SSH
 
@@ -110,7 +129,7 @@ ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
 git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
 ```
 
-## 5.配置oh-my-zsh
+## 6.配置oh-my-zsh
 
 1.下载
 
@@ -141,7 +160,7 @@ sed -i 's/plugins=(git)/plugins=(\n  git\n  zsh-autosuggestions\n  zsh-syntax-hi
 chsh -s $(which zsh)
 ```
 
-## 6.配置输入法oh-my-rime
+## 7.配置输入法oh-my-rime
 
 1.下载
 
@@ -158,7 +177,7 @@ sed -i 's/  horizontal: true/  horizontal: false/g' ~/.config/ibus/rime/ibus_rim
 sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
 ```
 
-## 7. 安装字体
+## 8. 安装字体
 
 ```shell
 git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
@@ -166,26 +185,26 @@ git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
 
 ```shell
 cd ~/Projects/dev-env/fonts && 
-sudo tar -vxJf sarasa-ui-sc.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf hack.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf lxgw-wenkai-mono.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf inter.tar.xz -C /usr/share/fonts/truetype && 
-sudo tar -vxJf courier-prime.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf sarasa-ui-sc.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf hack.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf lxgw-wenkai-mono.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf inter.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf courier-prime.tar.xz -C /usr/share/fonts/truetype && 
 sudo fc-cache -f && fc-cache -f
 ```
 
-## 8. 配置vim
+## 9. 配置vim
 
 ```shell
 sudo cp ~/Projects/dev-env/config/.vimrc /root/ && cp ~/Projects/dev-env/config/.vimrc ~/
 ```
 
-## 9. 常用工具
+## 10. 常用工具
 
 1.PDF工具`pdftk-java`
 

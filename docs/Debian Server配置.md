@@ -51,6 +51,12 @@ apt update && apt upgrade -y
 apt install -y sudo vim git build-essential curl openssh-server cmake autoconf ninja-build && apt remove -y vim-tiny && apt autoremove -y
 ```
 
+5.安装llvm
+
+```shell
+apt install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+```
+
 ### 1.3 配置vim
 
 ```shell
@@ -124,6 +130,5 @@ git config --global user.email "comrade.lijing@gmail.com" && git config --global
 ```shell
 echo '
 export JAVA_HOME=/usr/local/java/current
-
-export PATH=$PG_HOME/bin:$JAVA_HOME:$PATH' | sudo tee -a /etc/profile
+export PATH=$JAVA_HOME:$PATH' | sudo tee -a /etc/profile
 ```

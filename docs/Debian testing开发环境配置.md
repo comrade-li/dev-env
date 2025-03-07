@@ -61,7 +61,7 @@ sudo apt install -y yaru-theme-gnome-shell yaru-theme-gtk yaru-theme-icon yaru-t
 4.安装基础环境
 
 ```shell
-sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk tcl-dev tk-dev gnome-tweaks gnome-shell-extensions gnome-disk-utility gnome-calculator gnome-system-monitor gnome-shell-extension-user-theme
+sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk tcl-dev tk-dev gnome-tweaks gnome-shell-extensions gnome-disk-utility gnome-calculator gnome-system-monitor gnome-shell-extension-user-theme gnome-shell-extension-dashtodock
 ```
 
 5.安装llvm

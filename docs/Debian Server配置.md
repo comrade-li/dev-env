@@ -130,5 +130,5 @@ git config --global user.email "comrade.lijing@gmail.com" && git config --global
 ```shell
 echo '
 export JAVA_HOME=/usr/local/java/current
-export PATH=$JAVA_HOME:$PATH' | sudo tee -a /etc/profile
+export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile
 ```

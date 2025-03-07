@@ -36,7 +36,7 @@ sudo chown -R postgres /home/postgres
 ### 1.3 安装必须软件包
 
 ```shell
-sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-dev libssl-dev libpam0g-dev libxml2-dev libxml2-utils libxslt1-dev tcl-dev libperl-dev liblz4-dev libzstd-dev libossp-uuid-dev
+sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-dev libssl-dev libpam0g-dev libxml2-dev libxml2-utils libxslt1-dev tcl-dev libperl-dev liblz4-dev libzstd-dev libossp-uuid-dev libsystemd-dev gettext
 ```
 
 ### 1.4 配置、编译、安装
@@ -50,12 +50,13 @@ sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-
 2.编译
 
 ```shell
-make -j world-bin
+make world-bin
 ```
 
 3.安装
 
 ```shell
+sudo mkdir $PG_HOME && 
 sudo make install-world-bin
 ```
 
@@ -73,6 +74,19 @@ su - postgres
 
 ```shell
 initdb
+```
+
+修改postgres用户密码
+
+```sql
+ALTER USER postgres PASSWORD 'postgres';
+```
+
+修改远程连接配置
+
+```shell
+vim $PGDATA/postgresql.conf
+vim $PGDATA/pg_hba.conf
 ```
 
 ### 1.6 配置systemd

@@ -195,6 +195,8 @@ sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype &&
 sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
 sudo tar -xJf inter.tar.xz -C /usr/share/fonts/truetype && 
 sudo tar -xJf courier-prime.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf courier-new.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf times-new-roman.tar.xz -C /usr/share/fonts/truetype && 
 sudo fc-cache -f && fc-cache -f
 ```
 

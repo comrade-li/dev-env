@@ -100,9 +100,9 @@ sudo apt install -y vlc
 
 ```shell
 echo '
-export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 
 JAVA_HOME=~/.softwares/java/current
 GRADLE_HOME=~/.softwares/gradle/current
@@ -197,6 +197,16 @@ sudo tar -xJf inter.tar.xz -C /usr/share/fonts/truetype &&
 sudo tar -xJf courier-prime.tar.xz -C /usr/share/fonts/truetype && 
 sudo tar -xJf courier-new.tar.xz -C /usr/share/fonts/truetype && 
 sudo tar -xJf times-new-roman.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf arial.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf calibri.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf cambria.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf consolas.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf georgia.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf microsoft-jhenghei-ui.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf microsoft-yahei-ui.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf segoe-ui.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf selawik.tar.xz -C /usr/share/fonts/truetype && 
+sudo tar -xJf simsun.tar.xz -C /usr/share/fonts/truetype && 
 sudo fc-cache -f && fc-cache -f
 ```
 

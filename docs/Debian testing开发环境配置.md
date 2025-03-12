@@ -43,7 +43,7 @@ sudo apt update && sudo apt upgrade -y
 1.卸载无用软件
 
 ```shell
-sudo apt remove -y evolution gnome-contacts gnome-tour libreoffice-gtk3 libreoffice-uiconfig-draw simple-scan evolution-ews gnome-core gnome-weather libreoffice-help-common libreoffice-uiconfig-impress task-gnome-desktop evolution-plugin-bogofilter gnome-maps im-config evolution-plugin-pstimport gnome-music libreoffice-base-core libreoffice-impress libreoffice-uiconfig-writer totem-plugins evolution-plugins gnome-software libreoffice-calc libreoffice-math libreoffice-writer vim-tiny gnome gnome-software-plugin-deb libreoffice-common libreoffice-style-colibre malcontent gnome-calendar gnome-software-plugin-fwupd libreoffice-core libreoffice-style-elementary malcontent-gui gnome-clocks gnome-sound-recorder libreoffice-draw libreoffice-uiconfig-calc python3-uno gnome-connections gnome-text-editor libreoffice-gnome libreoffice-uiconfig-common shotwell xterm && sudo apt autoremove -y
+sudo apt remove -y libreoffice-gtk3 libreoffice-uiconfig-draw libreoffice-help-common libreoffice-uiconfig-impress libreoffice-base-core libreoffice-impress libreoffice-uiconfig-writer libreoffice-calc libreoffice-math libreoffice-writer libreoffice-common libreoffice-style-colibre libreoffice-core libreoffice-style-elementary libreoffice-draw libreoffice-uiconfig-calc libreoffice-gnome libreoffice-uiconfig-common gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps totem im-config simple-scan malcontent seahorse gnome-music shotwell gnome-sound-recorder  gnome-text-editor gnome-tour evolution gnome-software vim-tiny xterm && sudo apt autoremove -y
 ```
 
 2.安装字体库
@@ -52,25 +52,19 @@ sudo apt remove -y evolution gnome-contacts gnome-tour libreoffice-gtk3 libreoff
 sudo apt install -y fonts-arphic-ukai fonts-arphic-uming fonts-dejavu-core fonts-dejavu-mono fonts-droid-fallback fonts-liberation-sans-narrow fonts-liberation fonts-noto-cjk-extra fonts-noto-cjk fonts-noto-color-emoji fonts-noto-core fonts-noto-mono fonts-ubuntu fonts-urw-base35
 ```
 
-3.安装yaru theme包
+3.安装基础环境
 
 ```shell
-sudo apt install -y yaru-theme-gnome-shell yaru-theme-gtk yaru-theme-icon yaru-theme-sound yaru-theme-unity
+sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk tcl-dev tk-dev gnome-shell-extension-dashtodock
 ```
 
-4.安装基础环境
-
-```shell
-sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk tcl-dev tk-dev gnome-tweaks gnome-shell-extensions gnome-disk-utility gnome-calculator gnome-system-monitor gnome-shell-extension-user-theme gnome-shell-extension-dashtodock
-```
-
-5.安装llvm
+4.安装llvm
 
 ```shell
 sudo apt install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
-6.安装并配置KVM
+5.安装并配置KVM
 
 ```shell
 sudo apt install -y qemu-system-x86 virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils
@@ -80,7 +74,7 @@ sudo apt install -y qemu-system-x86 virt-manager libvirt-daemon-system virtinst 
 sudo systemctl enable --now libvirtd && sudo systemctl start libvirtd && sudo usermod -aG kvm ${USER} && sudo usermod -aG libvirt ${USER}
 ```
 
-7.安装并配置wireshark
+6.安装并配置wireshark
 
 ```shell
 sudo apt install -y wireshark
@@ -90,7 +84,7 @@ sudo apt install -y wireshark
 sudo chgrp wireshark /usr/bin/dumpcap && sudo chmod 4755 /usr/bin/dumpcap && sudo gpasswd -a ${USER} wireshark
 ```
 
-8.安装vlc
+7.安装vlc
 
 ```shell
 sudo apt install -y vlc

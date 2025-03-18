@@ -217,3 +217,10 @@ sudo cp ~/Projects/dev-env/config/.vimrc /root/ && cp ~/Projects/dev-env/config/
 ```shell
 sudo apt install -y pdftk-java
 ```
+
+## 11. 配置Eclipse
+
+```shell
+cp ~/Projects/dev-env/config/spring-tool-suite-4.desktop ~/.local/share/applications && 
+sudo desktop-file-install ~/.local/share/applications/spring-tool-suite-4.desktop
+```

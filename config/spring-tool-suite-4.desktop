@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Spring Tool Suite Edition
+Icon=/home/alexander/.softwares/sts/icon.xpm
+Exec="/home/alexander/.softwares/sts/SpringToolSuite4" %f
+Comment=Spring Tool for Eclipse
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=spring-tool-suite-4
+StartupNotify=true

@@ -90,6 +90,12 @@ sudo chgrp wireshark /usr/bin/dumpcap && sudo chmod 4755 /usr/bin/dumpcap && sud
 sudo apt install -y vlc
 ```
 
+8.Debian 12卸载无用包
+
+```shell
+sudo apt remove gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar totem gnome-chess simple-scan five-or-more four-in-a-row hitori cheese gnome-klotski libreoffice-* lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel im-config iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop synaptic tali gnome-taquin gnome-tetravex transmission-gtk evolution gnome-software
+```
+
 ## 4. 配置环境变量
 
 ```shell

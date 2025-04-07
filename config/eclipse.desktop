@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Eclipse IDE for Enterprise Java and Web Developers
+Icon=/home/alexander/.softwares/eclipse/icon.xpm
+Exec="/home/alexander/.softwares/eclipse/eclipse" %f
+Comment=Eclipse IDE for Enterprise Java and Web Developers
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=eclipse-ide
+StartupNotify=true

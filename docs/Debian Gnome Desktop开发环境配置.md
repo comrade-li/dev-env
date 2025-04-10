@@ -211,7 +211,7 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-## 8. 安装字体
+## 8. 安装配置字体
 
 1. 下载
 
@@ -223,29 +223,26 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
 
     ```shell
     cd ~/Projects/dev-env/fonts && 
-    sudo tar -xJf sarasa-ui-sc.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf apple-pingfang.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf consolas.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf courier-new.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf hack.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf lxgw-wenkai-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf inter.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf courier-prime.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf courier-new.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf times-new-roman.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf arial.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf calibri.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf cambria.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf consolas.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf georgia.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf lxgw-wenkai-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf microsoft-jhenghei-ui.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf microsoft-yahei-ui.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf segoe-ui.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf selawik.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf simsun.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf times-new-roman.tar.xz -C /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
+    ```
+
+    ```shell
+    cp ~/Projects/dev-env/config/fonts.conf ~/.config/fontconfig/
     ```
 
 ## 9. 配置vim

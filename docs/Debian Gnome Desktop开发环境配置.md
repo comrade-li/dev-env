@@ -223,16 +223,9 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
 
     ```shell
     cd ~/Projects/dev-env/fonts && 
-    sudo tar -xJf apple-pingfang.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf courier-new.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf hack.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf inter.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf times-new-roman.tar.xz -C /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
     ```
 

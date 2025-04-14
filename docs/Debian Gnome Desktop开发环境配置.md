@@ -205,7 +205,7 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
 2. 修改配置
 
     ```shell
-    cp ~/.config/ibus/rime/ibus_rime.yaml ~/.config/ibus/rime/user.yaml.bak && 
+    cp ~/.config/ibus/rime/ibus_rime.yaml ~/.config/ibus/rime/ibus_rime.yaml.bak && 
     cp ~/.config/ibus/rime/rime_mint.schema.yaml ~/.config/ibus/rime/rime_mint.schema.yaml.bak && 
     sed -i 's/  horizontal: true/  horizontal: false/g' ~/.config/ibus/rime/ibus_rime.yaml && 
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml

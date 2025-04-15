@@ -18,7 +18,6 @@ set  ruler
 set showmode
 set showcmd
 
-
 " 支持鼠标
 set mouse=a
 

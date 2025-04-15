@@ -44,19 +44,21 @@ sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-
 1.进入源码目录配置
 
 ```shell
+tar -zxvf /shares/postgresql-17.4.tar.gz -C ~ && 
+cd ~/postgresql-17.4 && 
 ./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm --with-lz4 --with-zstd --with-ssl=openssl --with-pam --with-systemd --with-uuid=ossp --with-libxml --with-libxslt --without-ldap CFLAGS='-O2 -pipe'
 ```
 
 2.编译
 
 ```shell
-make world-bin
+make -j2 world-bin
 ```
 
 3.安装
 
 ```shell
-sudo mkdir $PG_HOME && 
+sudo mkdir -p $PG_HOME && 
 sudo make install-world-bin
 ```
 

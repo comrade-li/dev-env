@@ -135,7 +135,8 @@ git config --global user.email "comrade.lijing@gmail.com" && git config --global
 
 ```shell
 sudo mkdir -p /shares && 
-echo 'mount_shares    /shares         virtiofs                    defaults    0       0' | sudo tee -a /etc/fstab
+echo 'mount_shares    /shares         virtiofs                    defaults    0       0' | sudo tee -a /etc/fstab && 
+sudo reboot
 ```
 
 ### 1.7 Java环境配置
@@ -146,6 +147,6 @@ export JAVA_HOME=/usr/local/java/current
 export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile && 
 sudo mkdir -p /usr/local/java && 
 sudo tar -zxf /shares/jdk-21_linux-x64_bin.tar.gz -C /usr/local/java && 
-sudo ln -s /usr/local/java/jdk-21.0.6/ /usr/local/java/current && 
+sudo ln -s /usr/local/java/jdk-21.0.7/ /usr/local/java/current && 
 source /etc/profile
 ```

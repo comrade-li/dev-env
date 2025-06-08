@@ -19,7 +19,7 @@ set showmode
 set showcmd
 
 " 支持鼠标
-set mouse=a
+" set mouse=a
 
 " 设置编码
 set encoding=UTF-8

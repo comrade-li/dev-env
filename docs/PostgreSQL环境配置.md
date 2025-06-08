@@ -8,7 +8,7 @@
 
 ```shell
 echo '
-export PG_HOME=/usr/local/pgsql-17.5
+export PG_HOME=/usr/local/pgsql-17
 export PGDATA=$PG_HOME/data
 export LD_LIBRARY=$PG_HOME/lib
 export PGPORT=5432
@@ -44,8 +44,8 @@ sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-
 1.进入源码目录配置
 
 ```shell
-tar -zxvf /shares/postgresql-17.5.tar.gz -C ~ && 
-cd ~/postgresql-17.5 && 
+tar -zxvf /shares/postgresql-17.*.tar.gz -C ~ && 
+cd ~/postgresql-17.* && 
 ./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm --with-lz4 --with-zstd --with-ssl=openssl --with-pam --with-systemd --with-uuid=ossp --with-libxml --with-libxslt --without-ldap CFLAGS='-O2 -pipe'
 ```
 
@@ -62,7 +62,7 @@ sudo mkdir -p $PG_HOME &&
 sudo make install-world-bin
 ```
 
-### 1.5 安装后配置
+### 1.5 配置PG
 
 ```shell
 sudo chown -R postgres $PG_HOME
@@ -78,17 +78,12 @@ su - postgres
 initdb
 ```
 
-修改postgres用户密码
-
-```sql
-ALTER USER postgres PASSWORD 'postgres';
-```
-
 修改远程连接配置
 
 ```shell
 vim $PGDATA/postgresql.conf
 vim $PGDATA/pg_hba.conf
+exit
 ```
 
 ### 1.6 配置systemd
@@ -125,4 +120,15 @@ sudo systemctl enable postgresql.service
 
 ```shell
 sudo systemctl start postgresql.service
+```
+
+### 1.7 修改postgres用户密码
+
+```shell
+su - postgres
+psql
+```
+
+```sql
+ALTER USER postgres PASSWORD 'postgres';
 ```

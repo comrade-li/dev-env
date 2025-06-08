@@ -63,7 +63,7 @@ vi /etc/sudoers
     * Debian 12
 
         ```shell
-        sudo apt remove -y gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar totem gnome-chess simple-scan five-or-more four-in-a-row hitori cheese gnome-klotski libreoffice-* lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel im-config iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop synaptic tali gnome-taquin gnome-tetravex transmission-gtk evolution gnome-software gnome-text-editor vim-tiny eog && sudo apt autoremove -y
+        sudo apt remove -y gnome-2048 gnome-contacts gnome-weather gnome-clocks gnome-maps aisleriot gnome-calendar totem gnome-chess simple-scan five-or-more four-in-a-row hitori cheese gnome-klotski libreoffice-* lightsoff gnome-mahjongg gnome-mines gnome-music gnome-nibbles quadrapassel im-config iagno rhythmbox gnome-robots shotwell gnome-sound-recorder gnome-sudoku swell-foop synaptic tali gnome-taquin gnome-tetravex transmission-gtk evolution evolution-data-server gnome-software gnome-text-editor vim-tiny eog && sudo apt autoremove -y
         ```
 
     * Debian testing
@@ -89,7 +89,7 @@ vi /etc/sudoers
 3. 安装基础环境
 
     ```shell
-    sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk gnome-shell-extension-dashtodock
+    sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk gnome-shell-extension-dashtodock fonts-liberation
     ```
 
     Debian 12安装yaru主题
@@ -224,6 +224,9 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
     ```shell
     cd ~/Projects/dev-env/fonts && 
     sudo tar -xJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf hack.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f

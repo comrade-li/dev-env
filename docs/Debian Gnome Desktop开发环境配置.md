@@ -238,7 +238,15 @@ export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a
 sudo cp ~/Projects/dev-env/config/.vimrc /root/ && cp ~/Projects/dev-env/config/.vimrc ~/
 ```
 
-## 10. 安装配置Eclipse和STS
+## 10. 卸载firefox-esr并删除无用文件
+
+```shell
+sudo apt remove firefox-esr && 
+sudo apt autoremove &&
+rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
+```
+
+## 11. 安装配置Eclipse和STS
 
 1. Eclipse配置
 

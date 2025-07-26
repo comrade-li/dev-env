@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Postman
+Icon=/home/alexander/.softwares/Postman/app/icons/icon_128x128.png
+Exec="/home/alexander/.softwares/Postman/Postman" %f
+Comment=Postman
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=Postman
+StartupNotify=true

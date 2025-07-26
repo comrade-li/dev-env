@@ -246,7 +246,7 @@ sudo apt autoremove &&
 rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
 ```
 
-## 11. 安装配置Eclipse和STS
+## 11. 安装配置Eclipse、STS和Postman
 
 1. Eclipse配置
 
@@ -260,4 +260,11 @@ rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.confi
     ```shell
     cp ~/Projects/dev-env/config/spring-tool-suite-4.desktop ~/.local/share/applications && 
     sudo desktop-file-install ~/.local/share/applications/spring-tool-suite-4.desktop
+    ```
+
+3. Postman配置
+
+    ```shell
+    cp ~/Projects/dev-env/config/postman.desktop ~/.local/share/applications && 
+    sudo desktop-file-install ~/.local/share/applications/postman.desktop
     ```

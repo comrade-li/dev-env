@@ -98,6 +98,18 @@
     sudo update-grub
     ```
 
+    设置登录缩放
+
+    ```shell
+    sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
+    ```
+
+    设置头像
+
+    ```shell
+    sudo cp ~/Projects/dev-env/config/avatar-wang.jpg /usr/share/pixmaps/faces
+    ```
+
 ## 2. Java开发环境搭建
 
 1. 配置环境变量
@@ -190,7 +202,7 @@
     ```
 
     ```shell
-    sudo dpkg -i yaru-theme-*.deb
+    sudo dpkg -i ~/Projects/dev-env/debs/yaru-theme-*.deb
     ```
 
 6. 安装配置dash-to-dock插件

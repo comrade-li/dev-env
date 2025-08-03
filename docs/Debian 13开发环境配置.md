@@ -49,7 +49,7 @@
 6. 安装并配置KVM
 
     ```shell
-    sudo apt install -y qemu-system-x86 virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils
+    sudo apt install -y qemu-system-x86 virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils virtiofsd
     ```
 
     ```shell

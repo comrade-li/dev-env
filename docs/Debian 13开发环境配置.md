@@ -1,6 +1,6 @@
 # Debian 13开发环境配置
 
-## 1. 基础包安装与配置
+## 1. 基础环境安装与配置
 
 1. 配置DEB822源
 
@@ -56,10 +56,6 @@
     sudo systemctl enable libvirtd && sudo usermod -aG kvm ${USER} && sudo usermod -aG libvirt ${USER}
     ```
 
-    ```shell
-    mkdir -p ~/KVM/isos ~/KVM/images ~/KVM/shares
-    ```
-
 7. 安装并配置wireshark
 
     ```shell
@@ -92,6 +88,8 @@
     LC_ALL="en_US.UTF-8"' | sudo tee /etc/default/locale && sudo update-locale
     ```
 
+    配置grub
+
     ```shell
     sudo cp /etc/default/grub /etc/default/grub.blk && 
     sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && 
@@ -102,12 +100,6 @@
 
     ```shell
     sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
-    ```
-
-    设置头像
-
-    ```shell
-    sudo cp ~/Projects/dev-env/config/avatar-wang.jpg /usr/share/pixmaps/faces
     ```
 
 ## 2. Java开发环境搭建
@@ -147,7 +139,7 @@
     tar -zxvf ~/Downloads/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip ~/Downloads/visualvm*.zip -d ~/.softwares && 
-    mv ~/.softwares/visualvm* ~/.softwares/visualvm 
+    mv ~/.softwares/visualvm* ~/.softwares/visualvm
     ```
 
 ## 3. 桌面环境配置
@@ -173,13 +165,12 @@
 4. 配置字体和vim
 
     ```shell
-    cd ~/Projects/dev-env/fonts && 
-    sudo tar -xJf fira-code.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf hack.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf sf-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/fira-code.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/hack.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/sf-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf ~/Projects/dev-env/fonts/source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
     ```
 
@@ -190,18 +181,11 @@
 5. 安装yaru主题
 
     ```shell
-    sudo apt install -y gnome-shell-extension-user-theme 
+    sudo apt install -y gnome-shell-extension-user-theme gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra
     ```
 
     ```shell
-    sudo apt install -y gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra
-    ```
-
-    ```shell
-    sudo dpkg -i ~/Projects/dev-env/debs/session-migration_0.3.9build1_amd64.deb
-    ```
-
-    ```shell
+    sudo dpkg -i ~/Projects/dev-env/debs/session-migration_0.3.9build1_amd64.deb && 
     sudo dpkg -i ~/Projects/dev-env/debs/yaru-theme-*.deb
     ```
 
@@ -259,14 +243,30 @@
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-9. 卸载firefox-esr并删除无用文件
+9. 设置头像
 
     ```shell
-    sudo apt remove firefox-esr && 
-    sudo apt autoremove &&
-    rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
+    sudo cp ~/Projects/dev-env/config/avatar-wang.jpg /usr/share/pixmaps/faces
+    ```
 
-10. 安装配置Eclipse、STS和Postman
+10. 复制KVM共享文件夹文件
+
+    ```shell
+    mkdir -p ~/KVM/isos ~/KVM/images ~/KVM/shares && 
+    cp ~/Downloads/jdk*.tar.gz ~/KVM/shares && 
+    cp ~/Downloads/bellsoft-jdk*.tar.gz ~/KVM/shares && 
+    cp ~/Downloads/postgresql*.tar.gz ~/KVM/shares
+    ```
+
+11. 卸载firefox-esr并删除无用文件
+
+    ```shell
+    sudo apt remove -y firefox-esr && 
+    sudo apt autoremove && 
+    rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
+    ```
+
+12. 安装配置Eclipse、STS和Postman
 
     1.Eclipse配置
 

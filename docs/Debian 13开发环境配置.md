@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk
+    sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM

@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git vim zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git vim tree zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM
@@ -266,7 +266,35 @@
     rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
     ```
 
-12. 安装配置Eclipse、STS和Postman
+12. 安装firefox
+
+    ```shell
+    sudo install -d -m 0755 /etc/apt/keyrings
+    ```
+
+    ```shell
+    wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+    ```
+
+    ```shell
+    echo 'Types: deb
+    URIs: https://packages.mozilla.org/apt
+    Suites: mozilla
+    Components: main
+    Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc ' | sudo tee /etc/apt/sources.list.d/mozilla.sources
+    ```
+
+    ```shell
+    echo 'Package: *
+    Pin: origin packages.mozilla.org
+    Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla
+    ```
+
+    ```shell
+    sudo apt update && sudo apt install firefox
+    ```
+
+13. 安装配置Eclipse、STS和Postman
 
     1.Eclipse配置
 

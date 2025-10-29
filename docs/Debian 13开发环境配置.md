@@ -127,11 +127,11 @@
 
     ```shell
     mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven && 
-    tar -zxvf ~/Downloads/jdk-21*.tar.gz -C ~/.softwares/java/oracle && 
-    ln -s ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
+    tar -zxvf ~/Downloads/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
     tar -zxvf ~/Downloads/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxvf ~/Downloads/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxvf ~/Downloads/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
+    ln -s ~/.softwares/java/oracle/jdk-25* ~/.softwares/java/current && 
     unzip ~/Downloads/gradle*.zip -d ~/.softwares/gradle && 
     ln -s ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
     tar -zxvf ~/Downloads/apache-maven*.tar.gz -C ~/.softwares/maven && 

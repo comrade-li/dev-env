@@ -78,7 +78,7 @@
     sudo mkdir -p /datas && 
     sudo chown ${USER} /datas && 
     sudo mount /dev/sda1 /datas && 
-    echo '\nUUID=5f03d300-97cc-4906-9849-b74629fe36e2 \t /datas \t btrfs \t defaults,user \t 0 \t 0' | sudo tee -a /etc/fstab
+    echo '\nbc14161f-d0e7-4474-8b13-6f3ee84488f3 \t /datas \t btrfs \t defaults,user \t 0 \t 0' | sudo tee -a /etc/fstab
     ```
 
 9. 安装Clash Client

@@ -124,19 +124,19 @@
 
     JAVA_HOME=~/.softwares/java/current
     GRADLE_HOME=~/.softwares/gradle/current
-    MAVEN_HOME=~/.softwares/maven/current
+    MVND_HOME=~/.softwares/mvnd/current
     JMETER_HOME=~/.softwares/jmeter
     VISUALVM_HOME=~/.softwares/visualvm
 
-    PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
+    PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
 
-    export JAVA_HOME GRADLE_HOME MAVEN_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
+    export JAVA_HOME GRADLE_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
 
     ```shell
-    mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven && 
+    mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/mvnd && 
     tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
@@ -144,8 +144,8 @@
     ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
     unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares/gradle && 
     ln -sf ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
-    tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares/maven && 
-    ln -sf ~/.softwares/maven/apache-maven* ~/.softwares/maven/current && 
+    tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
+    ln -sf ~/.softwares/mvnd/maven-mvnd* ~/.softwares/mvnd/current && 
     tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
@@ -206,7 +206,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro 12' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro 13' && 
     ln -sf ~/Projects/dev-env/configs/fontconfig ~/.config/fontconfig && 
     sudo fc-cache -f && fc-cache -f
     ```

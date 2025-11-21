@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential cmake autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM
@@ -131,7 +131,7 @@
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 
-## 2. Java开发环境搭建
+## 2. Java、go开发环境搭建
 
 1. 配置环境变量
 
@@ -141,33 +141,42 @@
     export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
     export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 
+    CMAKE_HOME=~/.softwares/cmake/current
+
+    GOROOT=~/.softwares/go/current
+
     JAVA_HOME=~/.softwares/java/current
     GRADLE_HOME=~/.softwares/gradle/current
     MVND_HOME=~/.softwares/mvnd/current
     JMETER_HOME=~/.softwares/jmeter
     VISUALVM_HOME=~/.softwares/visualvm
 
-    PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
+    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
 
-    export JAVA_HOME GRADLE_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
+    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
 
     ```shell
-    mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/mvnd && 
-    tar -zxf /datas/KVM/shares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
-    tar -zxf /datas/KVM/shares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
-    tar -zxf /datas/KVM/shares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
-    tar -zxf /datas/KVM/shares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
+    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/mvnd  && 
+    tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
+    ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
+    tar -xvf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
+    tar -xvf /datas/softwares/go1.24*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.24*")")"/" && 
+    ln -sf ~/.softwares/go/go1.25* ~/.softwares/go/current && 
+    tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
+    tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
+    tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
+    tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
     ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
-    unzip -qq /datas/KVM/shares/gradle*.zip -d ~/.softwares/gradle && 
+    unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares/gradle && 
     ln -sf ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
-    tar -zxf /datas/KVM/shares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
+    tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
     ln -sf ~/.softwares/mvnd/maven-mvnd* ~/.softwares/mvnd/current && 
-    tar -zxf /datas/KVM/shares/apache-jmeter*.tgz -C ~/.softwares && 
+    tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
-    unzip -qq /datas/KVM/shares/visualvm*.zip -d ~/.softwares && 
+    unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
     mv ~/.softwares/visualvm* ~/.softwares/visualvm
     ```
 
@@ -225,7 +234,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro 13' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro 13.5' && 
     ln -sf ~/Projects/dev-env/configs/fontconfig ~/.config/fontconfig && 
     sudo fc-cache -f && fc-cache -f
     ```

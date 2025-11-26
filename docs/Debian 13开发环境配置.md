@@ -103,7 +103,7 @@
     sudo chown ${USER} /datas && 
     sudo mount /dev/sda1 /datas && 
     echo '
-    UUID=bc14161f-d0e7-4474-8b13-6f3ee84488f3     /datas      btrfs   defaults,user   0   0' | sudo tee -a /etc/fstab
+    UUID=bc14161f-d0e7-4474-8b13-6f3ee84488f3     /datas      btrfs   defaults,user     0     0' | sudo tee -a /etc/fstab
     ```
 
 11. 安装Clash Client
@@ -162,8 +162,8 @@
     mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/mvnd  && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
     ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
-    tar -xvf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
-    tar -xvf /datas/softwares/go1.24*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.24*")")"/" && 
+    tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
+    tar -zxf /datas/softwares/go1.24*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.24*")")"/" && 
     ln -sf ~/.softwares/go/go1.25* ~/.softwares/go/current && 
     tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 

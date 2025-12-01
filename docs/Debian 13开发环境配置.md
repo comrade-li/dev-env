@@ -234,7 +234,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro 13.5' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Intel One Mono 13.5' && 
     ln -sf ~/Projects/dev-env/configs/fontconfig ~/.config/fontconfig && 
     sudo fc-cache -f && fc-cache -f
     ```
@@ -269,11 +269,15 @@
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
     ```
 
+    ```shell
+    git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
+    ```
+
     3.配置~/.zshrc并更换默认sh为zsh
 
     ```shell
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
-    sed -i 's/plugins=(git)/plugins=(\n  git\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\nsource ~\/.profile/g' ~/.zshrc && 
+    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\nsource ~\/.profile/g' ~/.zshrc && 
     chsh -s $(which zsh)
     ```
 

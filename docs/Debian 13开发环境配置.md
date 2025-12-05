@@ -218,6 +218,7 @@
     sudo tar -xJf /datas/fonts/roboto.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf /datas/fonts/sf-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo tar -xJf /datas/fonts/source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
+    sudo tar -xJf /datas/fonts/ubuntu-mono.tar.xz -C /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
     ```
 

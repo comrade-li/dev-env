@@ -203,22 +203,7 @@
 4. 配置字体
 
     ```shell
-    sudo tar -xJf /datas/fonts/adobe-fonts.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/cascadia-code.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/fira-code.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/github-monaspace.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/intel-one-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/inter.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/jetbrains-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/lxgw-wenkai.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/noto-sans-sc.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/noto-sans.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/noto-serif-sc.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/noto-serif.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/roboto.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/sf-mono.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/source-code-pro.tar.xz -C /usr/share/fonts/truetype && 
-    sudo tar -xJf /datas/fonts/ubuntu-mono.tar.xz -C /usr/share/fonts/truetype && 
+    sudo cp -r /datas/fonts/* /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
     ```
 
@@ -235,7 +220,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Intel One Mono 13.5' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'IntoneMono Nerd Font 13.5' && 
     ln -sf ~/Projects/dev-env/configs/fontconfig ~/.config/fontconfig && 
     sudo fc-cache -f && fc-cache -f
     ```

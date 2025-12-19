@@ -11,7 +11,7 @@
     ```shell
     echo 'Types: deb
     URIs: https://mirrors.ustc.edu.cn/debian
-    Suites: trixie trixie-updates trixie-backports
+    Suites: trixie trixie-updates
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
@@ -147,19 +147,20 @@
 
     JAVA_HOME=~/.softwares/java/current
     GRADLE_HOME=~/.softwares/gradle/current
+    MAVEN_HOME=~/.softwares/maven/current
     MVND_HOME=~/.softwares/mvnd/current
     JMETER_HOME=~/.softwares/jmeter
     VISUALVM_HOME=~/.softwares/visualvm
 
-    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
+    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
 
-    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
+    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
 
     ```shell
-    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/mvnd  && 
+    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd  && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
     ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
     tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
@@ -172,6 +173,8 @@
     ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
     unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares/gradle && 
     ln -sf ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
+    tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares/maven && 
+    ln -sf ~/.softwares/maven/apache-maven* ~/.softwares/maven/current && 
     tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
     ln -sf ~/.softwares/mvnd/maven-mvnd* ~/.softwares/mvnd/current && 
     tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 

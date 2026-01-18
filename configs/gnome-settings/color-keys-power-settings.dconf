@@ -1,0 +1,37 @@
+[color]
+night-light-schedule-automatic=false
+
+[media-keys]
+control-center=['<Super>comma']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
+help=@as []
+home=['<Super>e']
+
+[media-keys/custom-keybindings/custom0]
+binding='<Super>t'
+command='gnome-terminal'
+name='gnome-terminal'
+
+[media-keys/custom-keybindings/custom1]
+binding='<Super>f'
+command='firefox'
+name='firefox'
+
+[media-keys/custom-keybindings/custom2]
+binding='<Alt>f'
+command='firefox --private-window'
+name='firefox-private-window'
+
+[media-keys/custom-keybindings/custom3]
+binding='<Super>c'
+command='google-chrome'
+name='google-chrome'
+
+[media-keys/custom-keybindings/custom4]
+binding='<Alt>c'
+command='google-chrome --incognito'
+name='google-chrome-incognito'
+
+[power]
+power-button-action='interactive'
+sleep-inactive-ac-type='nothing'

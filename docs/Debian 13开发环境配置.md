@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential autoconf ninja-build tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM
@@ -152,9 +152,11 @@
     JMETER_HOME=~/.softwares/jmeter
     VISUALVM_HOME=~/.softwares/visualvm
 
-    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$PATH
+    NODE_HOME=~/.softwares/node
 
-    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME PATH' | tee -a ~/.profile
+    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
+
+    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
@@ -180,7 +182,9 @@
     tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
-    mv ~/.softwares/visualvm* ~/.softwares/visualvm
+    mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
+    tar -xJf /datas/softwares/node-*.tar.xz -C ~/.softwares && 
+    mv ~/.softwares/node-*  ~/.softwares/node
     ```
 
 ## 3. 桌面环境配置
@@ -268,7 +272,19 @@
     sudo cp ~/Projects/dev-env/configs/avatar-wang.jpg /usr/share/pixmaps/faces
     ```
 
-7. 安装配置oh-my-zsh
+7. 设置Terminal
+
+    ```shell
+    dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf
+    ```
+
+8. 设置颜色快捷键
+
+    ```shell
+    dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf
+    ```
+
+9. 安装配置oh-my-zsh
 
     1.安装oh-my-zsh
 
@@ -298,7 +314,7 @@
     chsh -s $(which zsh)
     ```
 
-8. 配置输入法oh-my-rime
+10. 配置输入法oh-my-rime
 
     1.下载
 
@@ -315,7 +331,7 @@
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-9. 卸载firefox-esr并删除无用文件
+11. 卸载firefox-esr并删除无用文件
 
     ```shell
     sudo apt remove -y firefox-esr && 
@@ -323,7 +339,7 @@
     rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution
     ```
 
-10. 安装firefox
+12. 安装firefox
 
     ```shell
     sudo install -d -m 0755 /etc/apt/keyrings
@@ -351,7 +367,7 @@
     sudo apt update && sudo apt install firefox
     ```
 
-11. Postman安装与配置
+13. Postman安装与配置
 
     ```shell
     tar -zxf ~/Downloads/postman-linux-x64.tar.gz -C ~/.softwares && 

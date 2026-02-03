@@ -1,0 +1,9 @@
+[keybindings]
+switch-applications=['<Super>Tab']
+switch-applications-backward=['<Shift><Super>Tab']
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+
+[preferences]
+button-layout='appmenu:minimize,maximize,close'
+num-workspaces=2

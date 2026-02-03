@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM
@@ -154,9 +154,10 @@
 
     NODE_HOME=~/.softwares/node
 
-    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
+    NVIM_HOME=~/.softwares/nvim
 
-    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
+    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$NVIM_HOME/bin:$PATH
+    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME NVIM_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
@@ -172,7 +173,7 @@
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
-    ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
+    ln -sf ~/.softwares/java/oracle/jdk-25* ~/.softwares/java/current && 
     unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares/gradle && 
     ln -sf ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
     tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares/maven && 
@@ -184,7 +185,9 @@
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
     mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
     tar -xJf /datas/softwares/node-*.tar.xz -C ~/.softwares && 
-    mv ~/.softwares/node-*  ~/.softwares/node
+    mv ~/.softwares/node-*  ~/.softwares/node && 
+    tar -zxf /datas/softwares/nvim-linux-x86_64.tar.gz -C ~/.softwares && 
+    mv ~/.softwares/nvim-linux-x86_64 ~/.softwares/nvim
     ```
 
 ## 3. 桌面环境配置
@@ -241,6 +244,22 @@
     sudo fc-cache -f && fc-cache -f
     ```
 
+    安装Nerd Font
+
+    ```shell
+    sudo mkdir /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/anonymous-pro.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/code-new-roman.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/fira-code.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/hack.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/intel-one-mono.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/jetbrains-mono.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/monaspace.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/space-mono.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo tar -xJf /datas/fonts/nerd-fonts/ubuntu-mono.tar.xz -C /usr/share/fonts/truetype/nerd-fonts && 
+    sudo fc-cache -f && fc-cache -f
+    ```
+
     安装Twitter Color Emoji
 
     ```shell
@@ -281,7 +300,8 @@
 8. 设置颜色快捷键
 
     ```shell
-    dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf
+    dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
+    dconf load /org/gnome/desktop/wm/ < ~/Projects/dev-env/configs/gnome-settings/desktop-wm-settings.dconf
     ```
 
 9. 安装配置oh-my-zsh
@@ -311,6 +331,8 @@
     ```shell
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
     sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\nsource ~\/.profile/g' ~/.zshrc && 
+    echo '
+    alias vi="nvim"' | tee -a ~/.zshrc && 
     chsh -s $(which zsh)
     ```
 

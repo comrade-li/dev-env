@@ -37,7 +37,7 @@
 4. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM
@@ -154,10 +154,8 @@
 
     NODE_HOME=~/.softwares/node
 
-    NVIM_HOME=~/.softwares/nvim
-
-    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$NVIM_HOME/bin:$PATH
-    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME NVIM_HOME PATH' | tee -a ~/.profile
+    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
+    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
@@ -185,9 +183,7 @@
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
     mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
     tar -xJf /datas/softwares/node-*.tar.xz -C ~/.softwares && 
-    mv ~/.softwares/node-*  ~/.softwares/node && 
-    tar -zxf /datas/softwares/nvim-linux-x86_64.tar.gz -C ~/.softwares && 
-    mv ~/.softwares/nvim-linux-x86_64 ~/.softwares/nvim
+    mv ~/.softwares/node-*  ~/.softwares/node
     ```
 
 ## 3. 桌面环境配置
@@ -331,8 +327,6 @@
     ```shell
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
     sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\nsource ~\/.profile/g' ~/.zshrc && 
-    echo '
-    alias vi="nvim"' | tee -a ~/.zshrc && 
     chsh -s $(which zsh)
     ```
 
@@ -364,11 +358,7 @@
 12. 安装firefox
 
     ```shell
-    sudo install -d -m 0755 /etc/apt/keyrings
-    ```
-
-    ```shell
-    wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+    wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg | sudo tee /usr/share/keyrings/mozilla.gpg > /dev/null
     ```
 
     ```shell
@@ -376,20 +366,54 @@
     URIs: https://packages.mozilla.org/apt
     Suites: mozilla
     Components: main
-    Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc ' | sudo tee /etc/apt/sources.list.d/mozilla.sources
+    Signed-By: /usr/share/keyrings/mozilla.gpg' | sudo tee /etc/apt/sources.list.d/mozilla.sources
     ```
 
     ```shell
-    echo 'Package: *
-    Pin: origin packages.mozilla.org
-    Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla
+    sudo apt update && sudo apt install -y firefox
+    ```
+
+13. 安装Chrome
+
+    ```shell
+    wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome-keyring.gpg > /dev/null
     ```
 
     ```shell
-    sudo apt update && sudo apt install firefox
+    echo 'Types: deb
+    URIs: http://dl.google.com/linux/chrome/deb/
+    Suites: stable
+    Components: main
+    Architectures: amd64
+    Signed-By: /usr/share/keyrings/google-chrome-keyring.gpg' | sudo tee /etc/apt/sources.list.d/google-chrome.sources
     ```
 
-13. Postman安装与配置
+    ```shell
+    sudo apt update && 
+    sudo apt install -y google-chrome-stable
+    ```
+
+14. 安装VSCode
+
+    ```shell
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor  | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
+    ```
+
+    ```shell
+    echo 'Types: deb
+    URIs: https://packages.microsoft.com/repos/code
+    Suites: stable
+    Components: main
+    Architectures: amd64
+    Signed-By: /usr/share/keyrings/microsoft.gpg' | sudo tee /etc/apt/sources.list.d/vscode.sources
+    ```
+
+    ```shell
+    sudo apt update &&
+    sudo apt install -y code
+    ```
+
+15. Postman安装与配置
 
     ```shell
     tar -zxf ~/Downloads/postman-linux-x64.tar.gz -C ~/.softwares && 

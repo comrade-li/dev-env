@@ -137,9 +137,9 @@
 
     ```shell
     echo '
-    export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
-    export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-    export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+    export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+    export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+    export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 
     CMAKE_HOME=~/.softwares/cmake/current
 
@@ -396,7 +396,8 @@
 
     ```shell
     sudo apt update && 
-    sudo apt install -y google-chrome-stable
+    sudo apt install -y google-chrome-stable && 
+    sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
     ```
 
 14. 安装VSCode

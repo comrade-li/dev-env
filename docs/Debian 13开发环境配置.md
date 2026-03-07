@@ -131,7 +131,7 @@
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 
-## 2. Java、go开发环境搭建
+## 2. Java、go、node开发环境搭建
 
 1. 配置环境变量
 
@@ -164,9 +164,9 @@
     mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd  && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
     ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
+    tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
     tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
-    tar -zxf /datas/softwares/go1.24*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.24*")")"/" && 
-    ln -sf ~/.softwares/go/go1.25* ~/.softwares/go/current && 
+    ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current && 
     tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 

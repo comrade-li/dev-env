@@ -54,8 +54,7 @@
 
     ```shell
     sudo systemctl enable libvirtd && sudo usermod -aG kvm ${USER} && sudo usermod -aG libvirt ${USER} && 
-    mkdir -p ~/KVM/images && 
-    dconf load /org/virt-manager/ < virt-manager.dconf
+    mkdir -p ~/KVM/images
     ```
 
 7. 安装并配置wireshark
@@ -298,7 +297,9 @@
 
     ```shell
     dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
-    dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf
+    dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf && 
+    dconf load /org/gnome/mutter/ < ~/Projects/dev-env/configs/gnome-settings/mutter.dconf && 
+    dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf
     ```
 
 9. 安装配置oh-my-zsh

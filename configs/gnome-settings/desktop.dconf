@@ -8,6 +8,8 @@ xkb-options=['caps:none']
 clock-format='24h'
 clock-show-seconds=true
 clock-show-weekday=true
+color-scheme='prefer-dark'
+accent-color='blue'
 
 [session]
 idle-delay=uint32 0
@@ -24,3 +26,16 @@ switch-windows-backward=['<Shift><Alt>Tab']
 [wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
 num-workspaces=2
+
+[background]
+picture-options='zoom'
+picture-uri='file:///usr/share/desktop-base/lines-theme/lockscreen/gnome-background.xml'
+picture-uri-dark='file:///usr/share/desktop-base/lines-theme/lockscreen/gnome-background.xml'
+primary-color='#ffffff'
+secondary-color='#000000'
+
+[screensaver]
+picture-options='zoom'
+picture-uri='file:///usr/share/desktop-base/lines-theme/lockscreen/gnome-background.xml'
+primary-color='#ffffff'
+secondary-color='#000000'

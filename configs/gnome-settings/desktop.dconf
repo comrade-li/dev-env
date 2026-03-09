@@ -8,6 +8,7 @@ xkb-options=['caps:none']
 clock-format='24h'
 clock-show-seconds=true
 clock-show-weekday=true
+enable-hot-corners=false
 color-scheme='prefer-dark'
 accent-color='blue'
 

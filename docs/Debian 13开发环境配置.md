@@ -299,7 +299,9 @@
     dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
     dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf && 
     dconf load /org/gnome/mutter/ < ~/Projects/dev-env/configs/gnome-settings/mutter.dconf && 
-    dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf
+    dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf && 
+    dconf load /org/gnome/nautilus/ < ~/Projects/dev-env/configs/gnome-settings/nautilus.dconf && 
+    gsettings set org.gnome.Settings window-state '(1620, 1080, false)'
     ```
 
 9. 安装配置oh-my-zsh

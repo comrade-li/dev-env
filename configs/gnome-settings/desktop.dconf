@@ -1,9 +1,23 @@
-[keybindings]
+[calendar]
+show-weekdate=true
+
+[input-sources]
+xkb-options=['caps:none']
+
+[interface]
+clock-format='24h'
+clock-show-seconds=true
+clock-show-weekday=true
+
+[privacy]
+recent-files-max-age=1
+
+[wm/keybindings]
 switch-applications=['<Super>Tab']
 switch-applications-backward=['<Shift><Super>Tab']
 switch-windows=['<Alt>Tab']
 switch-windows-backward=['<Shift><Alt>Tab']
 
-[preferences]
+[wm/preferences]
 button-layout='appmenu:minimize,maximize,close'
 num-workspaces=2

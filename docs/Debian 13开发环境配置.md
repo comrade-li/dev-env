@@ -54,7 +54,8 @@
 
     ```shell
     sudo systemctl enable libvirtd && sudo usermod -aG kvm ${USER} && sudo usermod -aG libvirt ${USER} && 
-    mkdir -p ~/KVM/images
+    mkdir -p ~/KVM/images && 
+    dconf load /org/virt-manager/ < virt-manager.dconf
     ```
 
 7. 安装并配置wireshark
@@ -293,11 +294,11 @@
     dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf
     ```
 
-8. 设置颜色快捷键
+8. 设置颜色、快捷键、禁用Caps
 
     ```shell
     dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
-    dconf load /org/gnome/desktop/wm/ < ~/Projects/dev-env/configs/gnome-settings/desktop-wm-settings.dconf
+    dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf
     ```
 
 9. 安装配置oh-my-zsh

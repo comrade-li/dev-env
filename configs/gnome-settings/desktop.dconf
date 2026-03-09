@@ -9,6 +9,9 @@ clock-format='24h'
 clock-show-seconds=true
 clock-show-weekday=true
 
+[session]
+idle-delay=uint32 0
+
 [privacy]
 recent-files-max-age=1
 

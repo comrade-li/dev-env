@@ -43,7 +43,7 @@
 5. 安装LLVM
 
     ```shell
-    sudo apt install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+    sudo apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
     ```
 
 6. 安装并配置KVM
@@ -143,6 +143,8 @@
 
     CMAKE_HOME=~/.softwares/cmake/current
 
+    CLANGD_HOME=~/.softwares/clangd
+
     GOROOT=~/.softwares/go/current
 
     JAVA_HOME=~/.softwares/java/current
@@ -154,8 +156,8 @@
 
     NODE_HOME=~/.softwares/node
 
-    PATH=$CMAKE_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
-    export CMAKE_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
+    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
+    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
     ```
 
 2. 安装
@@ -164,6 +166,8 @@
     mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd  && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
     ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
+    unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares && 
+    mv ~/.softwares/clangd_* ~/.softwares/clangd && 
     tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
     tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
     ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current && 

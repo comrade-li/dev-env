@@ -8,6 +8,6 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [window-state]
-initial-size=(1314, 898)
-initial-size-file-chooser=(890, 550)
+initial-size=(1300, 880)
+initial-size-file-chooser=(1300, 880)
 maximized=false

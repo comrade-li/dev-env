@@ -147,7 +147,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Google Sans Code 14' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Google Sans Code 14' 
     ```
 
     选择安装Twitter Color Emoji

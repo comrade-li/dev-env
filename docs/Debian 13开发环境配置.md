@@ -52,7 +52,27 @@
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+    sudo apt install -y libllvm-ocaml-dev libllvm22 llvm llvm-dev llvm-runtime clang clang-tools libclang-dev libclang1 clang-format python3-clang clang-tidy libclang-rt-dev lldb lld libc++-dev libc++abi-dev libomp-dev libbolt-dev bolt flang libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 libc++-dev-wasm32 libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 
+    ```
+
+    选择安装最新LLVM 22
+
+    ```shell
+    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /usr/share/keyrings/llvm.gpg > /dev/null
+    ```
+
+    ```shell
+    echo 'Types: deb
+    URIs: https://apt.llvm.org/trixie/
+    Suites: llvm-toolchain-trixie-22
+    Components: main
+    Architectures: amd64
+    Signed-By: /usr/share/keyrings/llvm.gpg' | sudo tee /etc/apt/sources.list.d/llvm.sources
+    ```
+
+    ```shell
+    sudo apt update && 
+    sudo apt install -y libllvm-22-ocaml-dev libllvm22 llvm-22 llvm-22-dev llvm-22-doc llvm-22-examples llvm-22-runtime clang-22 clang-tools-22 clang-22-doc libclang-common-22-dev libclang-22-dev libclang1-22 clang-format-22 python3-clang-22 clangd-22 clang-tidy-22 libclang-rt-22-dev libpolly-22-dev libfuzzer-22-dev lldb lld libc++-22-dev libc++abi-22-dev libomp-22-dev libclc-22-dev libunwind-22-dev libmlir-22-dev mlir-22-tools libbolt-22-dev bolt-22 flang-22 libclang-rt-22-dev-wasm32 libclang-rt-22-dev-wasm64 libc++-22-dev-wasm32 libc++abi-22-dev-wasm32 libclang-rt-22-dev-wasm32 libclang-rt-22-dev-wasm64 libllvmlibc-22-dev
     ```
 
 7. 安装并配置KVM
@@ -270,8 +290,11 @@
 
     NODE_HOME=~/.softwares/node
 
-    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$PATH
-    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME PATH' | tee -a ~/.profile
+    CARGO_HOME=~/.softwares/rust/cargo
+    RUSTUP_HOME=~/.softwares/rust/rustup
+
+    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$CARGO_HOME/bin:$PATH
+    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME CARGO_HOME RUSTUP_HOME PATH' | tee -a ~/.profile
     ```
 
     安装

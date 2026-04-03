@@ -32,6 +32,11 @@ binding='<Alt>c'
 command='google-chrome --incognito'
 name='google-chrome-incognito'
 
+[media-keys/custom-keybindings/custom5]
+binding='<Alt>t'
+command='gnome-terminal'
+name='gnome-terminal'
+
 [power]
 power-button-action='interactive'
 sleep-inactive-ac-type='nothing'

@@ -22,14 +22,14 @@
     ```shell
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak && 
     echo 'Types: deb
-    URIs: https://mirror.nju.edu.cn/debian
-    Suites: testing testing-updates testing-backports
+    URIs: http://mirrors.ustc.edu.cn/debian
+    Suites: trixie trixie-updates
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
     Types: deb
-    URIs: https://mirror.nju.edu.cn/debian-security
-    Suites: testing-security
+    URIs: http://mirrors.ustc.edu.cn/debian-security
+    Suites: trixie-security
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/debian.sources
     ```
@@ -52,7 +52,7 @@
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y libllvm-ocaml-dev libllvm22 llvm llvm-dev llvm-runtime clang clang-tools libclang-dev libclang1 clang-format python3-clang clang-tidy libclang-rt-dev lldb lld libc++-dev libc++abi-dev libomp-dev libbolt-dev bolt flang libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 libc++-dev-wasm32 libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 
+    sudo apt install -y libllvm-ocaml-dev llvm llvm-dev llvm-runtime clang clang-tools libclang-dev clang-format python3-clang clang-tidy libclang-rt-dev lldb lld libc++-dev libc++abi-dev libomp-dev libbolt-dev bolt flang libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 libc++-dev-wasm32 libclang-rt-dev-wasm32 libclang-rt-dev-wasm64 
     ```
 
     选择安装最新LLVM 22
@@ -105,7 +105,10 @@
 10. 安装yaru-theme和dash-to-dock插件
 
     ```shell
-    sudo apt install -y gnome-shell-extension-user-theme yaru-theme-* && 
+    sudo apt install -y gnome-shell-extension-user-theme gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra && 
+    sudo dpkg -i /datas/debs/session-migration*.deb && 
+    sudo dpkg -i /datas/debs/yaru-theme-*.deb && 
+    sudo apt install -y gnome-shell-extension-user-theme yaru-theme-* &&  
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 

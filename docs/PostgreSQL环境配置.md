@@ -8,7 +8,7 @@
 
 ```shell
 echo '
-export PG_HOME=/usr/local/pgsql-17
+export PG_HOME=/usr/local/pgsql-18
 export PGDATA=$PG_HOME/data
 export LD_LIBRARY=$PG_HOME/lib
 export PGPORT=5432
@@ -44,8 +44,8 @@ sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-
 1.进入源码目录配置
 
 ```shell
-tar -zxvf /shares/postgresql-17.*.tar.gz -C ~ && 
-cd ~/postgresql-17.* && 
+tar -zxvf /shares/postgresql-18.*.tar.gz -C ~ && 
+cd ~/postgresql-18.* && 
 ./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm --with-lz4 --with-zstd --with-ssl=openssl --with-pam --with-systemd --with-uuid=ossp --with-libxml --with-libxslt --without-ldap CFLAGS='-O2 -pipe'
 ```
 

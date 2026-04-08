@@ -54,7 +54,7 @@ apt install -y sudo vim git build-essential curl openssh-server cmake autoconf n
 5.安装llvm
 
 ```shell
-apt install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
 ### 1.3 配置vim
@@ -145,7 +145,7 @@ echo '
 export JAVA_HOME=/usr/local/java/current
 export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile && 
 sudo mkdir -p /usr/local/java && 
-sudo tar -zxf /shares/jdk-21_linux-x64_bin.tar.gz -C /usr/local/java && 
-sudo ln -s /usr/local/java/jdk-21.* /usr/local/java/current && 
+sudo tar -zxf /shares/jdk-25_linux-x64_bin.tar.gz -C /usr/local/java && 
+sudo ln -s /usr/local/java/jdk-25.* /usr/local/java/current && 
 source /etc/profile
 ```

@@ -52,7 +52,7 @@
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y sudo apt install clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang 
+    sudo apt install -y sudo apt install clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang 
     ```
 
 7. 安装并配置KVM
@@ -132,8 +132,6 @@
     ```
 
 13. 设置字体
-
-    设置字体
 
     ```shell
     sudo cp -r /datas/fonts/nonerd-fonts/*  /usr/share/fonts/truetype && 
@@ -260,19 +258,21 @@
     JMETER_HOME=~/.softwares/jmeter
     VISUALVM_HOME=~/.softwares/visualvm
 
+    SCALA_HOME=~/.softwares/scala/current
+
     NODE_HOME=~/.softwares/node
 
     CARGO_HOME=~/.softwares/rust/cargo
     RUSTUP_HOME=~/.softwares/rust/rustup
 
-    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$NODE_HOME/bin:$CARGO_HOME/bin:$PATH
-    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME NODE_HOME CARGO_HOME RUSTUP_HOME PATH' | tee -a ~/.profile
+    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$SCALA_HOME/bin:$NODE_HOME/bin:$CARGO_HOME/bin:$PATH
+    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME SCALA_HOME NODE_HOME CARGO_HOME RUSTUP_HOME PATH' | tee -a ~/.profile
     ```
 
     安装
 
     ```shell
-    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd  && 
+    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd ~/.softwares/scala && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
     ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
     unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares && 
@@ -291,6 +291,9 @@
     ln -sf ~/.softwares/maven/apache-maven* ~/.softwares/maven/current && 
     tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
     ln -sf ~/.softwares/mvnd/maven-mvnd* ~/.softwares/mvnd/current && 
+    tar -zxf /datas/softwares/scala-2.*.tgz -C ~/.softwares/scala && 
+    tar -zxf /datas/softwares/scala3-*.tar.gz  -C ~/.softwares/scala && 
+    ln -sf ~/.softwares/scala/scala-2.* ~/.softwares/scala/current && 
     tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 

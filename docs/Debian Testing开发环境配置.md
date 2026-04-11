@@ -22,13 +22,13 @@
     ```shell
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak && 
     echo 'Types: deb
-    URIs: https://mirror.nju.edu.cn/debian
+    URIs: https://mirrors.tuna.tsinghua.edu.cn/debian
     Suites: testing testing-updates testing-backports
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
     Types: deb
-    URIs: https://mirror.nju.edu.cn/debian-security
+    URIs: https://mirrors.tuna.tsinghua.edu.cn/debian-security
     Suites: testing-security
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/debian.sources
@@ -46,13 +46,13 @@
 5. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
     ```
 
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang 
+    sudo apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
     ```
 
 7. 安装并配置KVM
@@ -241,32 +241,48 @@
 
     ```shell
     echo '
+    # TeX Live
     export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
     export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
     export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 
-    CMAKE_HOME=~/.softwares/cmake/current
+    # Cmake
+    export PATH=$PATH:~/.softwares/cmake/current/bin
 
-    CLANGD_HOME=~/.softwares/clangd
+    # clangd server
+    export PATH=$PATH:~/.softwares/clangd/bin
 
-    GOROOT=~/.softwares/go/current
+    # go
+    export GOROOT=~/.softwares/go/current
+    export PATH=$PATH:$GOROOT/bin
 
-    JAVA_HOME=~/.softwares/java/current
-    GRADLE_HOME=~/.softwares/gradle/current
-    MAVEN_HOME=~/.softwares/maven/current
-    MVND_HOME=~/.softwares/mvnd/current
-    JMETER_HOME=~/.softwares/jmeter
-    VISUALVM_HOME=~/.softwares/visualvm
+    # JDK
+    export JAVA_HOME=~/.softwares/java/current
+    export PATH=$PATH:$JAVA_HOME/bin
+    
+    # gradle
+    export PATH=$PATH:~/.softwares/gradle/current/bin
 
-    SCALA_HOME=~/.softwares/scala/current
+    # maven
+    export PATH=$PATH:~/.softwares/maven/current/bin
 
-    NODE_HOME=~/.softwares/node
+    # visualvm
+    export PATH=$PATH:~/.softwares/visualvm/bin
 
-    CARGO_HOME=~/.softwares/rust/cargo
-    RUSTUP_HOME=~/.softwares/rust/rustup
+    # jmeter
+    export PATH=$PATH:~/.softwares/jmeter/bin
 
-    PATH=$CMAKE_HOME/bin:$CLANGD_HOME/bin:$GOROOT/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$MAVEN_HOME/bin:$MVND_HOME/bin:$JMETER_HOME/bin:$VISUALVM_HOME/bin:$SCALA_HOME/bin:$NODE_HOME/bin:$CARGO_HOME/bin:$PATH
-    export CMAKE_HOME CLANGD_HOME GOROOT JAVA_HOME GRADLE_HOME MAVEN_HOME MVND_HOME JMETER_HOME VISUALVM_HOME SCALA_HOME NODE_HOME CARGO_HOME RUSTUP_HOME PATH' | tee -a ~/.profile
+    # scala
+    export SCALA_HOME=~/.softwares/scala/current
+    export PATH=$PATH:$SCALA_HOME/bin
+
+    # node
+    export PATH=$PATH:~/.softwares/node/bin
+
+    # custom rust install path
+    export CARGO_HOME=~/.softwares/rust/cargo
+    export RUSTUP_HOME=~/.softwares/rust/rustup
+    export PATH=$PATH:$CARGO_HOME/bin' | tee -a ~/.profile
     ```
 
     安装

@@ -37,7 +37,7 @@
 4. 卸载无用包并更新包
 
     ```shell
-    sudo apt remove -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm && 
+    sudo apt remove -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps simple-scan libreoffice-* malcontent gnome-tour gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano gnome-snapshot showtime && 
     sudo apt autoremove -y && 
     sudo apt update && 
     sudo apt upgrade -y

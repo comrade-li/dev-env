@@ -336,7 +336,7 @@
     编译安装Python
 
     ```shell
-    tar -xJf /datas/softwares/Python-3.14.4.tar.xz -C ~/ && 
+    tar -xJf /datas/softwares/Python-*.tar.xz -C ~/ && 
     cd ~/Python-* && 
     ./configure --prefix=$HOME/.softwares/python --enable-optimizations && 
     make -j8 && 

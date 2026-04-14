@@ -22,13 +22,13 @@
     ```shell
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak && 
     echo 'Types: deb
-    URIs: https://mirror.nju.edu.cn/debian
-    Suites: trixie trixie-updates trixie-backports
+    URIs: http://mirrors.ustc.edu.cn/debian
+    Suites: trixie trixie-updates
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
     Types: deb
-    URIs: https://mirror.nju.edu.cn/debian-security
+    URIs: http://mirrors.ustc.edu.cn/debian-security
     Suites: trixie-security
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/debian.sources

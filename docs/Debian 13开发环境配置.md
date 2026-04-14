@@ -46,13 +46,13 @@
 5. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build lua5.4 tcpdump tcl tk pkg-config lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tk pkg-config lm-sensors fancontrol i2c-tools
     ```
 
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y llvm llvm-dev llvm-runtime clang clang-tools clang-format clang-tidy lldb lld libc++-dev libc++-dev libomp-dev
+    sudo apt install -y llvm llvm-dev llvm-runtime clang clang-tools clang-format clang-tidy python3-clang lldb lld libc++-dev libc++-dev libomp-dev
     ```
 
 7. 安装并配置KVM
@@ -243,7 +243,7 @@
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-17. Java、go、nod、Cmake、clangd开发环境搭建
+17. Java、go、Cmake、clangd开发环境搭建
 
     配置环境变量
 
@@ -255,7 +255,7 @@
     export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 
     # Cmake
-    export PATH=$PATH:~/.softwares/cmake/current/bin
+    export PATH=$PATH:~/.softwares/cmake/bin
 
     # clangd server
     export PATH=$PATH:~/.softwares/clangd/bin
@@ -269,28 +269,19 @@
     export PATH=$PATH:$JAVA_HOME/bin
     
     # gradle
-    export PATH=$PATH:~/.softwares/gradle/current/bin
+    export PATH=$PATH:~/.softwares/gradle/bin
 
     # maven
-    export PATH=$PATH:~/.softwares/maven/current/bin
+    export PATH=$PATH:~/.softwares/maven/bin
+
+    # mvnd
+    export PATH=$PATH:~/.softwares/mvnd/bin
 
     # visualvm
     export PATH=$PATH:~/.softwares/visualvm/bin
 
     # jmeter
     export PATH=$PATH:~/.softwares/jmeter/bin
-
-    # scala
-    export SCALA_HOME=~/.softwares/scala/current
-    export PATH=$PATH:$SCALA_HOME/bin
-
-    # Python
-    export PATH=~/.softwares/python/bin:$PATH
-
-    # node
-    export PATH=$PATH:~/.softwares/node/bin
-    export NODE_GLOBAL=~/.node/npm-global
-    export PATH=$PATH:$NODE_GLOBAL/bin
 
     # custom rust install path
     export CARGO_HOME=~/.softwares/rust/cargo
@@ -301,9 +292,9 @@
     安装
 
     ```shell
-    mkdir -p ~/.softwares/cmake ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/gradle ~/.softwares/maven ~/.softwares/mvnd ~/.softwares/scala && 
-    tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares/cmake && 
-    ln -sf ~/.softwares/cmake/cmake-* ~/.softwares/cmake/current && 
+    mkdir -p ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica && 
+    tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares && 
+    mv ~/.softwares/cmake-* ~/.softwares/cmake && 
     unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares && 
     mv ~/.softwares/clangd_* ~/.softwares/clangd && 
     tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
@@ -314,35 +305,16 @@
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
     ln -sf ~/.softwares/java/oracle/jdk-25* ~/.softwares/java/current && 
-    unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares/gradle && 
-    ln -sf ~/.softwares/gradle/gradle*/ ~/.softwares/gradle/current && 
-    tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares/maven && 
-    ln -sf ~/.softwares/maven/apache-maven* ~/.softwares/maven/current && 
-    tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares/mvnd && 
-    ln -sf ~/.softwares/mvnd/maven-mvnd* ~/.softwares/mvnd/current && 
-    tar -zxf /datas/softwares/scala-2.*.tgz -C ~/.softwares/scala && 
-    tar -zxf /datas/softwares/scala3-*.tar.gz  -C ~/.softwares/scala && 
-    ln -sf ~/.softwares/scala/scala-2.* ~/.softwares/scala/current && 
+    unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares && 
+    mv ~/.softwares/gradle-* ~/.softwares/gradle && 
+    tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares && 
+    mv ~/.softwares/apache-maven-* ~/.softwares/maven && 
+    tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares && 
+    mv ~/.softwares/maven-mvnd-* ~/.softwares/mvnd && 
     tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
-    mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
-    tar -xJf /datas/softwares/node-*.tar.xz -C ~/.softwares && 
-    mv ~/.softwares/node-*  ~/.softwares/node && 
-    echo 'cache=~/.node/npm-cache
-    prefix=~/.node/npm-global' | tee ~/.npmrc
-    ```
-
-    编译安装Python
-
-    ```shell
-    tar -xJf /datas/softwares/Python-*.tar.xz -C ~/ && 
-    cd ~/Python-* && 
-    ./configure --prefix=$HOME/.softwares/python --enable-optimizations && 
-    make -j8 && 
-    make install && 
-    cd ~ && 
-    rm -rf ~/Python-*
+    mv ~/.softwares/visualvm* ~/.softwares/visualvm
     ```
 
 18. 安装Chrome

@@ -46,13 +46,13 @@
 5. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3-pip python3-dev tcpdump tcl tk lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build lua5.4 tcpdump tcl tk pkg-config lm-sensors fancontrol i2c-tools
     ```
 
 6. 安装LLVM
 
     ```shell
-    sudo apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang 
+    sudo apt install -y llvm llvm-dev llvm-runtime clang clang-tools clang-format clang-tidy lldb lld libc++-dev libc++-dev libomp-dev
     ```
 
 7. 安装并配置KVM
@@ -284,8 +284,13 @@
     export SCALA_HOME=~/.softwares/scala/current
     export PATH=$PATH:$SCALA_HOME/bin
 
+    # Python
+    export PATH=~/.softwares/python/bin:$PATH
+
     # node
     export PATH=$PATH:~/.softwares/node/bin
+    export NODE_GLOBAL=~/.node/npm-global
+    export PATH=$PATH:$NODE_GLOBAL/bin
 
     # custom rust install path
     export CARGO_HOME=~/.softwares/rust/cargo
@@ -323,7 +328,21 @@
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
     mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
     tar -xJf /datas/softwares/node-*.tar.xz -C ~/.softwares && 
-    mv ~/.softwares/node-*  ~/.softwares/node
+    mv ~/.softwares/node-*  ~/.softwares/node && 
+    echo 'cache=~/.node/npm-cache
+    prefix=~/.node/npm-global' | tee ~/.npmrc
+    ```
+
+    编译安装Python
+
+    ```shell
+    tar -xJf /datas/softwares/Python-3.14.4.tar.xz -C ~/ && 
+    cd ~/Python-* && 
+    ./configure --prefix=$HOME/.softwares/python --enable-optimizations && 
+    make -j8 && 
+    make install && 
+    cd ~ && 
+    rm -rf ~/Python-*
     ```
 
 18. 安装Chrome

@@ -46,7 +46,7 @@
 5. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tk pkg-config lm-sensors fancontrol i2c-tools
+    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tcl-dev tk tk-dev pkg-config lm-sensors fancontrol i2c-tools
     ```
 
 6. 安装LLVM

@@ -36,7 +36,7 @@ sudo chown -R postgres /home/postgres
 ### 1.3 安装必须软件包
 
 ```shell
-sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-dev libssl-dev libpam0g-dev libxml2-dev libxml2-utils libxslt1-dev tcl-dev libperl-dev liblz4-dev libzstd-dev libossp-uuid-dev libsystemd-dev gettext
+sudo apt install -y flex bison perl libperl-dev libedit-dev libreadline8t64 libreadline-dev gzip bzip2 libicu-dev gettext libpython3-dev tcl tcl-dev tk tk-dev liblz4-dev zstd openssl libssl-dev libgssapi-krb5-2 libldap-dev libpam0g-dev libsystemd-dev libossp-uuid-dev e2fsprogs libcurl4t64 libcurl4-openssl-dev libnuma-dev liburing-dev pkg-config libxml2-dev libxslt1-dev selinux-basics selinux-utils fop dbtoepub xsltproc
 ```
 
 ### 1.4 配置、编译、安装
@@ -44,9 +44,9 @@ sudo apt install -y libicu-dev pkg-config bison flex libpython3-dev libreadline-
 1.进入源码目录配置
 
 ```shell
-tar -zxvf /shares/postgresql-18.*.tar.gz -C ~ && 
+tar -zxf /shares/postgresql-18.*.tar.gz -C ~ && 
 cd ~/postgresql-18.* && 
-./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm --with-lz4 --with-zstd --with-ssl=openssl --with-pam --with-systemd --with-uuid=ossp --with-libxml --with-libxslt --without-ldap CFLAGS='-O2 -pipe'
+./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm LLVM_CONFIG='/usr/bin/llvm-config' --with-lz4 --with-zstd --with-ssl=openssl --with-gssapi --with-ldap --with-pam --with-systemd --with-uuid=ossp --with-libcurl --with-libnuma --with-liburing --with-libxml --with-libxslt --with-selinux CFLAGS='-O2 -pipe'
 ```
 
 2.编译
@@ -88,8 +88,6 @@ exit
 
 ### 1.6 配置systemd
 
-1.创建service文件
-
 ```shell
 echo "[Unit]
 Description=PostgreSQL database server
@@ -110,13 +108,9 @@ TimeoutSec=infinity
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/postgresql.service
 ```
 
-2.设置自启动
-
 ```shell
 sudo systemctl enable postgresql.service
 ```
-
-3.启动服务
 
 ```shell
 sudo systemctl start postgresql.service

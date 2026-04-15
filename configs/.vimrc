@@ -5,7 +5,7 @@ syntax on
 set nocompatible
 
 " 显示行号
-set number
+set nonumber
 
 " 启用256色
 set t_Co=256
@@ -13,13 +13,13 @@ set t_Co=256
 " 是否显示状态栏: 0 表示不显示; 1 表示只在多窗口时显示; 2 表示显示
 set laststatus=2
 " 在状态栏显示光标的当前位置
-set  ruler
+set ruler
 " 底栏显示当前模式
 set showmode
 set showcmd
 
 " 支持鼠标
-" set mouse=a
+set mouse=a
 
 " 设置编码
 set encoding=UTF-8

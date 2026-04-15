@@ -17,18 +17,17 @@ iface enp1s0 inet static
 
 ### 1.2 软件源和包管理(root)
 
-1.备份传统格式源
-
 ```shell
-mv /etc/apt/sources.list /etc/apt/sources.list.bak
+su - root
 ```
 
-2.设置DEB822源，以清华大学源为例
+1.设置源
 
 ```shell
+mv /etc/apt/sources.list /etc/apt/sources.list.bak && 
 echo 'Types: deb
 URIs: https://mirrors.ustc.edu.cn/debian
-Suites: trixie trixie-updates trixie-backports
+Suites: trixie trixie-updates
 Components: main contrib non-free non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
@@ -39,33 +38,33 @@ Components: main contrib non-free non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | tee /etc/apt/sources.list.d/debian.sources
 ```
 
-3.更新源并升级
+2.管理包
 
 ```shell
-apt update && apt upgrade -y
+apt update && 
+apt upgrade -y && 
+apt install -y sudo git vim openssh-server gpg libssl-dev curl build-essential cmake gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tcl-dev tk tk-dev pkg-config && 
+apt remove -y vim-tiny nano && 
+apt autoremove -y
 ```
 
-4.管理软件包
+3.安装llvm
 
 ```shell
-apt install -y sudo vim git build-essential curl openssh-server cmake autoconf ninja-build && apt remove -y vim-tiny && apt autoremove -y
-```
-
-5.安装llvm
-
-```shell
-apt install -y clang-format clang-tidy clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+apt install -y clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
 ### 1.3 配置vim
 
 ```shell
-echo 'syntax on
+echo '
+syntax on
 set nocompatible
 set number
 set t_Co=256
 set laststatus=2
-set  ruler
+set ruler
+set mouse=a
 set showmode
 set showcmd
 set encoding=UTF-8
@@ -105,7 +104,7 @@ set wildmode=longest:list,full' | tee ~/.vimrc
 
 ### 1.4 配置sudo
 
-根据环境中的用户配置。
+根据环境中的用户配置
 
 ```shell
 vim /etc/sudoers
@@ -140,8 +139,8 @@ git config --global user.email "comrade.lijing@gmail.com" && git config --global
 
 ```shell
 sudo mkdir -p /shares && 
-echo 'mount_shares    /shares         virtiofs                    defaults    0       0' | sudo tee -a /etc/fstab && 
-sudo reboot
+sudo mount -t virtiofs mount_shares /shares && 
+echo 'mount_shares    /shares         virtiofs                    defaults    0       0' | sudo tee -a /etc/fstab
 ```
 
 ### 1.7 Java环境配置

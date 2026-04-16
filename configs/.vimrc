@@ -5,7 +5,7 @@ syntax on
 set nocompatible
 
 " 显示行号
-set nonumber
+set number
 
 " 启用256色
 set t_Co=256

@@ -2,9 +2,9 @@
 
 `注意：` 基本Linux环境参考 [Debian Server配置](./Debian%20Server配置.md)
 
-## 1. 源码安装
+## 1. 源码编译安装
 
-### 1.1 配置环境变量
+### 1.1 环境变量
 
 ```shell
 echo '
@@ -13,20 +13,16 @@ export PGDATA=$PG_HOME/data
 export LD_LIBRARY=$PG_HOME/lib
 export PGPORT=5432
 export LANG=en_US.UTF-8
-export PATH=$PG_HOME/bin:$PATH' |  sudo tee -a /etc/profile && source /etc/profile
+export PATH=$PATH:$PG_HOME/bin' |  sudo tee -a /etc/profile && source /etc/profile
 ```
 
-### 1.2 配置postgres组和用户
-
-1.创建组用户
+### 1.2 添加postgres组和用户
 
 ```shell
 sudo groupadd postgers && 
 sudo useradd -g postgers -d /home/postgres -s /bin/bash postgres && 
 sudo passwd postgres
 ```
-
-2.新建用户家目录
 
 ```shell
 sudo mkdir /home/postgres && 
@@ -36,7 +32,7 @@ sudo chown -R postgres /home/postgres
 ### 1.3 安装必须软件包
 
 ```shell
-sudo apt install -y flex bison perl libperl-dev libedit-dev libreadline8t64 libreadline-dev gzip bzip2 libicu-dev gettext libpython3-dev tcl tcl-dev tk tk-dev liblz4-dev zstd openssl libssl-dev libgssapi-krb5-2 libldap-dev libpam0g-dev libsystemd-dev libossp-uuid-dev e2fsprogs libcurl4t64 libcurl4-openssl-dev libnuma-dev liburing-dev pkg-config libxml2-dev libxslt1-dev selinux-basics selinux-utils fop dbtoepub xsltproc
+sudo apt install -y flex bison perl libperl-dev libedit-dev libreadline8t64 libreadline-dev libicu-dev gettext libpython3-dev liblz4-dev zstd libgssapi-krb5-2 libldap-dev libpam0g-dev libsystemd-dev libossp-uuid-dev e2fsprogs libcurl4t64 libcurl4-openssl-dev libnuma-dev liburing-dev libxml2-dev libxslt1-dev fop dbtoepub xsltproc
 ```
 
 ### 1.4 配置、编译、安装
@@ -52,7 +48,7 @@ cd ~/postgresql-18.* &&
 2.编译
 
 ```shell
-make -j4 world-bin
+make -j$(nproc) world-bin
 ```
 
 3.安装
@@ -65,25 +61,20 @@ sudo make install-world-bin
 ### 1.5 配置PG
 
 ```shell
-sudo chown -R postgres $PG_HOME
-```
-
-```shell
+sudo chown -R postgres $PG_HOME && 
 su - postgres
 ```
 
-初始化
-
 ```shell
-initdb
+initdb && 
+exit
 ```
 
 修改远程连接配置
 
 ```shell
-vim $PGDATA/postgresql.conf
-vim $PGDATA/pg_hba.conf
-exit
+sudo vim $PGDATA/postgresql.conf
+sudo vim $PGDATA/pg_hba.conf
 ```
 
 ### 1.6 配置systemd
@@ -109,18 +100,17 @@ WantedBy=multi-user.target" | sudo tee /etc/systemd/system/postgresql.service
 ```
 
 ```shell
-sudo systemctl enable postgresql.service
+sudo systemctl start postgresql.service
 ```
 
 ```shell
-sudo systemctl start postgresql.service
+sudo systemctl enable postgresql.service
 ```
 
 ### 1.7 修改postgres用户密码
 
 ```shell
-su - postgres
-psql
+psql -U postgres
 ```
 
 ```sql

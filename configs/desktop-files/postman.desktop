@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Postman
-Icon=/home/alexander/.softwares/Postman/app/icons/icon_128x128.png
+Icon=/home/alexander/.softwares/Postman/app/resources/app/assets/icon.png
 Exec="/home/alexander/.softwares/Postman/Postman" %f
 Comment=Postman
 Categories=Development;IDE;

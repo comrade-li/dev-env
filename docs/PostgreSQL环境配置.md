@@ -62,19 +62,15 @@ sudo make install-world-bin
 
 ```shell
 sudo chown -R postgres $PG_HOME && 
-su - postgres
-```
-
-```shell
-initdb && 
-exit
+su -l postgres -c "initdb"
 ```
 
 修改远程连接配置
 
 ```shell
-sudo vim $PGDATA/postgresql.conf
-sudo vim $PGDATA/pg_hba.conf
+sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" $PGDATA/postgresql.conf && 
+sudo sed -i "s/#port = 5432/port = 5432/g" $PGDATA/postgresql.conf && 
+sudo sed -i "s|host    all             all             127.0.0.1/32            trust|host    all             all             192.168.0.1/24            md5|g" $PGDATA/pg_hba.conf
 ```
 
 ### 1.6 配置systemd
@@ -100,19 +96,12 @@ WantedBy=multi-user.target" | sudo tee /etc/systemd/system/postgresql.service
 ```
 
 ```shell
+sudo systemctl enable postgresql.service && 
 sudo systemctl start postgresql.service
-```
-
-```shell
-sudo systemctl enable postgresql.service
 ```
 
 ### 1.7 修改postgres用户密码
 
-```shell
-psql -U postgres
-```
-
 ```sql
-ALTER USER postgres PASSWORD 'postgres';
+su -l postgres -c "psql -c \"ALTER USER postgres PASSWORD 'postgres';\""
 ```

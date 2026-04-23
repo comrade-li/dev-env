@@ -3,8 +3,7 @@
 1. 将当前用户加入root权限
 
     ```shell
-    su - root
-    vi /etc/sudoers
+    su -c 'sed -i "s/root     ALL=(ALL:ALL) ALL/root     ALL=(ALL:ALL) ALL\n$USER     ALL=(ALL:ALL) ALL/g" /etc/sudoers' root
     ```
 
 2. 挂载硬盘
@@ -37,8 +36,8 @@
 4. 卸载无用包并更新包
 
     ```shell
-    sudo apt remove -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters && 
-    sudo apt autoremove -y && 
+    sudo apt purge -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters && 
+    sudo apt autoremove --purge && 
     sudo apt update && 
     sudo apt upgrade -y
     ```
@@ -46,7 +45,13 @@
 5. 基础包安装
 
     ```shell
-    sudo apt install -y git git-lfs vim tree zsh ibus-rime openssh-server gpg libssl-dev curl build-essential gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tcl-dev tk tk-dev pkg-config lm-sensors fancontrol i2c-tools
+    sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools iproute2 bind9-dnsutils tcpdump gpg openssl libssl-dev git git-lfs vim tree zsh ibus-rime build-essential binutils linux-headers-amd64 gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tk-dev pkg-config lm-sensors fancontrol i2c-tools
+    ```
+
+    配置python venv环境
+
+    ```shell
+    python3 -m venv ~/.home_venv
     ```
 
 6. 安装LLVM
@@ -91,7 +96,14 @@
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 
-11. 系统设置
+11. 安装TeXLive
+
+    ```shell
+    sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
+    sudo /media/cdrom/install-tl
+    ```
+
+12. 系统设置
 
     设置locale防止终端警告
 
@@ -127,18 +139,18 @@
     git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
     ```
 
-12. 拉取个人配置
+13. 拉取个人配置
 
     ```shell
     git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
     ```
 
-13. 设置字体
+14. 设置字体
 
     ```shell
-    sudo cp -r /datas/fonts/nonerd-fonts/*  /usr/share/fonts/truetype && 
+    sudo cp -r /datas/fonts/nonerd-fonts/* /usr/share/fonts/truetype && 
     mkdir -p ~/.config/fontconfig && 
-    ln -s ~/Projects/dev-env/configs/fontconfig/fonts.conf ~/.config/fontconfig/fonts.conf && 
+    ln -sf ~/Projects/dev-env/configs/fonts.conf ~/.config/fontconfig/fonts.conf && 
     sudo fc-cache -f && fc-cache -f && 
     gsettings set org.gnome.desktop.interface font-antialiasing 'rgba' && 
     gsettings set org.gnome.desktop.interface font-hinting 'none' && 
@@ -159,11 +171,11 @@
     选择安装Nerd Font
 
     ```shell
-    sudo cp -r /datas/fonts/nerd-fonts/*  /usr/share/fonts/truetype && 
+    sudo cp -r /datas/fonts/nerd-fonts/* /usr/share/fonts/truetype && 
     sudo fc-cache -f && fc-cache -f
     ```
 
-14. 设置桌面环境
+15. 设置桌面环境
 
     配置vim
 
@@ -174,7 +186,7 @@
     设置头像
 
     ```shell
-    sudo cp ~/Projects/dev-env/configs/avatar-wang.jpg /usr/share/pixmaps/faces
+    sudo cp ~/Projects/dev-env/configs/avatars/avatar-wang.jpg /usr/share/pixmaps/faces
     ```
 
     设置Terminal
@@ -196,7 +208,7 @@
     gsettings set org.gnome.Settings window-state '(1620, 1080, false)'
     ```
 
-15. 安装配置oh-my-zsh
+16. 安装配置oh-my-zsh
 
     1.安装oh-my-zsh
 
@@ -222,11 +234,11 @@
 
     ```shell
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
-    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\n\nsetopt nonomatch/g' ~/.zshrc && 
+    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\nsource ~\/.home_venv\/bin\/activate\n\nsetopt nonomatch/g' ~/.zshrc && 
     chsh -s $(which zsh)
     ```
 
-16. 安装配置oh-my-rime输入法
+17. 安装配置oh-my-rime输入法
 
     1.下载
 
@@ -243,7 +255,7 @@
     sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-17. Java、go、Cmake、clangd开发环境搭建
+18. Java、go、Cmake、clangd开发环境搭建
 
     配置环境变量
 
@@ -300,7 +312,7 @@
     tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
     tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
     ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current && 
-    tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle &&  
+    tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
@@ -317,7 +329,7 @@
     mv ~/.softwares/visualvm* ~/.softwares/visualvm
     ```
 
-18. 安装Chrome
+19. 安装Chrome
 
     ```shell
     wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome-keyring.gpg > /dev/null
@@ -338,10 +350,10 @@
     sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
     ```
 
-19. 安装VSCode
+20. 安装VSCode
 
     ```shell
-    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor  | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
     ```
 
     ```shell
@@ -358,7 +370,7 @@
     sudo apt install -y code
     ```
 
-20. 安装firefox
+21. 安装firefox
 
     ```shell
     wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg | sudo tee /usr/share/keyrings/mozilla.gpg > /dev/null
@@ -381,16 +393,16 @@
     复制这条命令后先关闭Firefox-esr浏览器！
 
     ```shell
-    sudo apt remove -y firefox-esr && 
-    sudo apt autoremove && 
+    sudo apt purge -y firefox-esr && 
+    sudo apt autoremove --purge -y && 
     rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution && 
     sudo apt update && sudo apt install -y firefox
     ```
 
-21. Postman安装与配置
+22. Postman安装与配置
 
     ```shell
-    tar -zxf ~/Downloads/postman-linux-x64.tar.gz -C ~/.softwares && 
-    cp ~/Projects/dev-env/configs/postman.desktop ~/.local/share/applications && 
-    sudo desktop-file-install ~/.local/share/applications/postman.desktop
+    tar -zxf /datas/softwares/postman-linux-x64.tar.gz -C ~/.softwares && 
+    cp ~/Projects/dev-env/configs/desktop-files/postman.desktop ~/.local/share/applications && 
+    desktop-file-install ~/.local/share/applications/postman.desktop --dir=~/.local/share/applications/postman.desktop
     ```

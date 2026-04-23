@@ -3,7 +3,7 @@
 1. 将当前用户加入root权限
 
     ```shell
-    su -c 'sed -i "s/root     ALL=(ALL:ALL) ALL/root     ALL=(ALL:ALL) ALL\n$USER     ALL=(ALL:ALL) ALL/g" /etc/sudoers' root
+    su root -c 'sed -i "48i $USER    ALL=(ALL:ALL) ALL" /etc/sudoers'
     ```
 
 2. 挂载硬盘
@@ -37,7 +37,7 @@
 
     ```shell
     sudo apt purge -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters && 
-    sudo apt autoremove --purge && 
+    sudo apt autoremove --purge -y && 
     sudo apt update && 
     sudo apt upgrade -y
     ```

@@ -51,7 +51,7 @@
     配置python venv环境
 
     ```shell
-    python3 -m venv ~/.home_venv
+    python3 -m venv ~/.softwares/python_venv
     ```
 
 6. 安装LLVM
@@ -186,7 +186,7 @@
     设置头像
 
     ```shell
-    sudo cp ~/Projects/dev-env/configs/avatars/avatar-wang.jpg /usr/share/pixmaps/faces
+    sudo cp ~/Projects/dev-env/configs/avatars/* /usr/share/pixmaps/faces
     ```
 
     设置Terminal
@@ -234,7 +234,7 @@
 
     ```shell
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
-    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\nsource ~\/.home_venv\/bin\/activate\n\nsetopt nonomatch/g' ~/.zshrc && 
+    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\nsource ~\/.softwares\/python_venv\/bin\/activate\n\nsetopt nonomatch/g' ~/.zshrc && 
     chsh -s $(which zsh)
     ```
 

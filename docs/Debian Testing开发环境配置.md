@@ -1,4 +1,4 @@
-# Debian 13开发环境配置
+# Debian Testing开发环境配置
 
 1. 将当前用户加入root权限
 
@@ -21,14 +21,14 @@
     ```shell
     sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak && 
     echo 'Types: deb
-    URIs: http://mirrors.ustc.edu.cn/debian
-    Suites: trixie trixie-updates
+    URIs: https://mirror.nju.edu.cn/debian
+    Suites: testing testing-updates testing-backports
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
     Types: deb
-    URIs: http://mirrors.ustc.edu.cn/debian-security
-    Suites: trixie-security
+    URIs: https://mirror.nju.edu.cn/debian-security
+    Suites: testing-security
     Components: main contrib non-free non-free-firmware
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/debian.sources
     ```
@@ -90,10 +90,7 @@
 10. 安装yaru-theme和dash-to-dock插件
 
     ```shell
-    sudo apt install -y gnome-shell-extension-user-theme gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra && 
-    sudo dpkg -i /datas/debs/session-migration*.deb && 
-    sudo dpkg -i /datas/debs/yaru-theme-*.deb && 
-    sudo apt install -y gnome-shell-extension-dashtodock
+    sudo apt install -y gnome-shell-extension-user-theme gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra gnome-shell-extension-dashtodock yaru-theme-*
     ```
 
 11. 安装TeXLive

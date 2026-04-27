@@ -242,9 +242,9 @@
     2.修改配置
 
     ```shell
-    sed -i sed -i "s|\s\+horizontal: true|  horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
+    sed -i "s|horizontal: true|horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
     sed -i "/^\s\+-\s\+name:\s\+emoji_suggestion/,+2d" ~/.config/ibus/rime/rime_mint.schema.yaml && 
-    sed -i "s|^\s\+page_size:\s\+6|  page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
+    sed -i "s|page_size: 6|page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
 18. Java、go、Cmake、clangd开发环境搭建

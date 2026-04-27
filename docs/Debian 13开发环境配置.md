@@ -3,7 +3,7 @@
 1. 将当前用户加入root权限
 
     ```shell
-    su root -c 'sed -i "48i $USER    ALL=(ALL:ALL) ALL" /etc/sudoers'
+    su root -c 'sed -i "s|^root\s\+ALL=(ALL:ALL)\s\+ALL$|root    ALL=(ALL:ALL) ALL\n$USER    ALL=(ALL:ALL) ALL|g" /etc/sudoers'
     ```
 
 2. 挂载硬盘
@@ -168,13 +168,6 @@
     sudo fc-cache -f && fc-cache -f
     ```
 
-    选择安装Nerd Font
-
-    ```shell
-    sudo cp -r /datas/fonts/nerd-fonts/* /usr/share/fonts/truetype && 
-    sudo fc-cache -f && fc-cache -f
-    ```
-
 15. 设置桌面环境
 
     配置vim
@@ -249,10 +242,9 @@
     2.修改配置
 
     ```shell
-    cp ~/.config/ibus/rime/ibus_rime.yaml ~/.config/ibus/rime/ibus_rime.yaml.bak && 
-    cp ~/.config/ibus/rime/rime_mint.schema.yaml ~/.config/ibus/rime/rime_mint.schema.yaml.bak && 
-    sed -i 's/  horizontal: true/  horizontal: false/g' ~/.config/ibus/rime/ibus_rime.yaml && 
-    sed -i '/^  - name: emoji_suggestion/,+2d' ~/.config/ibus/rime/rime_mint.schema.yaml
+    sed -i sed -i "s|\s\+horizontal: true|  horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
+    sed -i "/^\s\+-\s\+name:\s\+emoji_suggestion/,+2d" ~/.config/ibus/rime/rime_mint.schema.yaml && 
+    sed -i "s|^\s\+page_size:\s\+6|  page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
 18. Java、go、Cmake、clangd开发环境搭建

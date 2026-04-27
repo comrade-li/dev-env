@@ -47,7 +47,7 @@ apt install -y clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 lib
 ### 1.3 配置sudo、语言和grub设置
 
 ```shell
-sed -i "48i $USER    ALL=(ALL:ALL) ALL" /etc/sudoers
+sed -i "s|^root\s\+ALL=(ALL:ALL)\s\+ALL$|root    ALL=(ALL:ALL) ALL\n$USER    ALL=(ALL:ALL) ALL|g" /etc/sudoers
 ```
 
 ```shell

@@ -70,7 +70,7 @@ su -l postgres -c "initdb"
 ```shell
 sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" $PGDATA/postgresql.conf && 
 sudo sed -i "s/#port = 5432/port = 5432/g" $PGDATA/postgresql.conf && 
-sudo sed -i "s|host    all             all             127.0.0.1/32            trust|host    all             all             192.168.0.1/24            md5|g" $PGDATA/pg_hba.conf
+sudo sed -i "s|^host\s\+all\s\+all\s\+127.0.0.1/32\s\+trust|host    all             all             192.168.0.1/24            md5|g" $PGDATA/pg_hba.conf
 ```
 
 ### 1.6 配置systemd

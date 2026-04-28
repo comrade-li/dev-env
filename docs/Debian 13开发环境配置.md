@@ -155,9 +155,9 @@
     gsettings set org.gnome.desktop.interface font-antialiasing 'rgba' && 
     gsettings set org.gnome.desktop.interface font-hinting 'none' && 
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
-    gsettings set org.gnome.desktop.interface font-name 'Inter 12' && 
-    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 12' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Google Sans Code NF 14'
+    gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
+    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 16'
     ```
 
     选择安装Twitter Color Emoji
@@ -198,7 +198,7 @@
     dconf load /org/gnome/nautilus/ < ~/Projects/dev-env/configs/gnome-settings/nautilus.dconf && 
     dconf load /org/gtk/gtk4/settings/file-chooser/ < ~/Projects/dev-env/configs/gnome-settings/file-chooser.dconf && 
     dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf && 
-    gsettings set org.gnome.Settings window-state '(1620, 1080, false)'
+    gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
     ```
 
 16. 安装配置oh-my-zsh

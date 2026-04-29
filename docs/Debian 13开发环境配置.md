@@ -48,12 +48,6 @@
     sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools iproute2 bind9-dnsutils tcpdump gpg openssl libssl-dev git git-lfs vim tree zsh ibus-rime build-essential binutils linux-headers-amd64 gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tk-dev pkg-config lm-sensors fancontrol i2c-tools
     ```
 
-    配置python venv环境
-
-    ```shell
-    python3 -m venv ~/.softwares/python_venv
-    ```
-
 6. 安装LLVM
 
     ```shell
@@ -103,151 +97,7 @@
     sudo /media/cdrom/install-tl
     ```
 
-12. 系统设置
-
-    设置locale防止终端警告
-
-    ```shell
-    echo 'LANG="en_US.UTF-8"
-    LANGUAGE="en_US:en"
-    LC_ALL="en_US.UTF-8"' | sudo tee /etc/default/locale && sudo update-locale
-    ```
-
-    设置grub取消选择启动项等待
-
-    ```shell
-    sudo cp /etc/default/grub /etc/default/grub.blk && 
-    sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && 
-    sudo update-grub
-    ```
-
-    设置登录缩放与当前一致
-
-    ```shell
-    sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
-    ```
-
-    配置SSH密钥对
-
-    ```shell
-    ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
-    ```
-
-    设置git本地用户名和邮箱
-
-    ```shell
-    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
-    ```
-
-13. 拉取个人配置
-
-    ```shell
-    git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
-    ```
-
-14. 设置字体
-
-    ```shell
-    sudo cp -r /datas/fonts/* /usr/share/fonts/truetype && 
-    mkdir -p ~/.config/fontconfig && 
-    ln -sf ~/Projects/dev-env/configs/fonts.conf ~/.config/fontconfig/fonts.conf && 
-    sudo fc-cache -f && fc-cache -f && 
-    gsettings set org.gnome.desktop.interface font-antialiasing 'rgba' && 
-    gsettings set org.gnome.desktop.interface font-hinting 'none' && 
-    gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
-    gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
-    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 16'
-    ```
-
-    选择安装Twitter Color Emoji
-
-    ```shell
-    sudo apt install -y ttf-bitstream-vera && 
-    sudo dpkg -i /datas/debs/fonts-twemoji-svginot*.deb && 
-    sudo fc-cache -f && fc-cache -f
-    ```
-
-15. 设置桌面环境
-
-    配置vim
-
-    ```shell
-    sudo ln -sf ~/Projects/dev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
-    ```
-
-    设置头像
-
-    ```shell
-    sudo cp ~/Projects/dev-env/configs/avatars/* /usr/share/pixmaps/faces
-    ```
-
-    设置Terminal
-
-    ```shell
-    dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf
-    ```
-
-    设置颜色、快捷键、禁用Caps
-
-    ```shell
-    dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
-    dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf && 
-    dconf load /org/gnome/mutter/ < ~/Projects/dev-env/configs/gnome-settings/mutter.dconf && 
-    dconf load /org/gnome/shell/app-switcher/ < ~/Projects/dev-env/configs/gnome-settings/app-switcher.dconf && 
-    dconf load /org/gnome/nautilus/ < ~/Projects/dev-env/configs/gnome-settings/nautilus.dconf && 
-    dconf load /org/gtk/gtk4/settings/file-chooser/ < ~/Projects/dev-env/configs/gnome-settings/file-chooser.dconf && 
-    dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf && 
-    gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
-    ```
-
-16. 安装配置oh-my-zsh
-
-    1.安装oh-my-zsh
-
-    ```shell
-    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-    ```
-
-    2.安装插件
-
-    ```shell
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-    ```
-
-    ```shell
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
-    ```
-
-    ```shell
-    git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
-    ```
-
-    3.配置~/.zshrc并更换默认sh为zsh
-
-    ```shell
-    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
-    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\nsource ~\/.softwares\/python_venv\/bin\/activate\n\nsetopt nonomatch/g' ~/.zshrc && 
-    chsh -s $(which zsh)
-    ```
-
-17. 安装配置oh-my-rime输入法
-
-    1.下载
-
-    ```shell
-    git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
-    ```
-
-    2.修改配置
-
-    ```shell
-    sed -i "s|horizontal: true|horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
-    sed -i "/^\s\+-\s\+name:\s\+emoji_suggestion/,+2d" ~/.config/ibus/rime/rime_mint.schema.yaml && 
-    sed -i "s|page_size: 6|page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
-    ```
-
-18. Java、go、Cmake、clangd开发环境搭建
+12. Java、go、Cmake、clangd开发环境搭建
 
     配置环境变量
 
@@ -319,6 +169,156 @@
     mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter && 
     unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
     mv ~/.softwares/visualvm* ~/.softwares/visualvm
+    ```
+
+    配置python venv环境
+
+    ```shell
+    python3 -m venv ~/.softwares/python_venv
+    ```
+
+13. 系统设置
+
+    设置locale防止终端警告
+
+    ```shell
+    echo 'LANG="en_US.UTF-8"
+    LANGUAGE="en_US:en"
+    LC_ALL="en_US.UTF-8"' | sudo tee /etc/default/locale && sudo update-locale
+    ```
+
+    设置grub取消选择启动项等待
+
+    ```shell
+    sudo cp /etc/default/grub /etc/default/grub.blk && 
+    sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && 
+    sudo update-grub
+    ```
+
+    设置登录缩放与当前一致
+
+    ```shell
+    sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
+    ```
+
+    配置SSH密钥对
+
+    ```shell
+    ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
+    ```
+
+    设置git本地用户名和邮箱
+
+    ```shell
+    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
+    ```
+
+14. 拉取个人配置
+
+    ```shell
+    git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
+    ```
+
+15. 设置字体
+
+    ```shell
+    sudo cp -r /datas/fonts/* /usr/share/fonts/truetype && 
+    mkdir -p ~/.config/fontconfig && 
+    ln -sf ~/Projects/dev-env/configs/fonts.conf ~/.config/fontconfig/fonts.conf && 
+    sudo fc-cache -f && fc-cache -f && 
+    gsettings set org.gnome.desktop.interface font-antialiasing 'rgba' && 
+    gsettings set org.gnome.desktop.interface font-hinting 'none' && 
+    gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
+    gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
+    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 16'
+    ```
+
+    选择安装Twitter Color Emoji
+
+    ```shell
+    sudo apt install -y ttf-bitstream-vera && 
+    sudo dpkg -i /datas/debs/fonts-twemoji-svginot*.deb && 
+    sudo fc-cache -f && fc-cache -f
+    ```
+
+16. 设置桌面环境
+
+    配置vim
+
+    ```shell
+    sudo ln -sf ~/Projects/dev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
+    ```
+
+    设置头像
+
+    ```shell
+    sudo cp ~/Projects/dev-env/configs/avatars/* /usr/share/pixmaps/faces
+    ```
+
+    设置Terminal
+
+    ```shell
+    dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf
+    ```
+
+    设置颜色、快捷键、禁用Caps
+
+    ```shell
+    dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
+    dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf && 
+    dconf load /org/gnome/mutter/ < ~/Projects/dev-env/configs/gnome-settings/mutter.dconf && 
+    dconf load /org/gnome/shell/app-switcher/ < ~/Projects/dev-env/configs/gnome-settings/app-switcher.dconf && 
+    dconf load /org/gnome/nautilus/ < ~/Projects/dev-env/configs/gnome-settings/nautilus.dconf && 
+    dconf load /org/gtk/gtk4/settings/file-chooser/ < ~/Projects/dev-env/configs/gnome-settings/file-chooser.dconf && 
+    dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf && 
+    gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
+    ```
+
+17. 安装配置oh-my-zsh
+
+    1.安装oh-my-zsh
+
+    ```shell
+    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+    ```
+
+    2.安装插件
+
+    ```shell
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    ```
+
+    ```shell
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    ```
+
+    ```shell
+    git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
+    ```
+
+    3.配置~/.zshrc并更换默认sh为zsh
+
+    ```shell
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
+    sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n)\n\nsource ~\/.profile\nsource ~\/.softwares\/python_venv\/bin\/activate\n\nsetopt nonomatch/g' ~/.zshrc && 
+    chsh -s $(which zsh)
+    ```
+
+18. 安装配置oh-my-rime输入法
+
+    1.下载
+
+    ```shell
+    git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
+    ```
+
+    2.修改配置
+
+    ```shell
+    sed -i "s|horizontal: true|horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
+    sed -i "/^\s\+-\s\+name:\s\+emoji_suggestion/,+2d" ~/.config/ibus/rime/rime_mint.schema.yaml && 
+    sed -i "s|page_size: 6|page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
 19. 安装Chrome

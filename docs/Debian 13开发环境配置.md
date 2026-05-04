@@ -33,28 +33,23 @@
     Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/debian.sources
     ```
 
-4. 卸载无用包并更新包
+4. 卸载无用包、更新包、安装基础包
 
     ```shell
     sudo apt purge -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters && 
     sudo apt autoremove --purge -y && 
     sudo apt update && 
-    sudo apt upgrade -y
-    ```
-
-5. 基础包安装
-
-    ```shell
+    sudo apt upgrade -y && 
     sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools iproute2 bind9-dnsutils tcpdump gpg openssl libssl-dev git git-lfs vim tree zsh ibus-rime build-essential binutils linux-headers-amd64 gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tk-dev pkg-config lm-sensors fancontrol i2c-tools
     ```
 
-6. 安装LLVM
+5. 安装LLVM
 
     ```shell
     sudo apt install -y llvm llvm-dev llvm-runtime clang clang-tools clang-format clang-tidy python3-clang lldb lld libc++-dev libc++-dev libomp-dev
     ```
 
-7. 安装并配置KVM
+6. 安装并配置KVM
 
     ```shell
     sudo apt install -y qemu-system-x86 virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils virtiofsd
@@ -65,7 +60,7 @@
     mkdir -p ~/KVM/images
     ```
 
-8. 安装并配置wireshark
+7. 安装并配置wireshark
 
     ```shell
     sudo apt install -y wireshark
@@ -75,13 +70,13 @@
     sudo chgrp wireshark /usr/bin/dumpcap && sudo chmod 4755 /usr/bin/dumpcap && sudo gpasswd -a ${USER} wireshark
     ```
 
-9. 安装vlc
+8. 安装vlc
 
     ```shell
     sudo apt install -y vlc
     ```
 
-10. 安装yaru-theme和dash-to-dock插件
+9. 安装yaru-theme和dash-to-dock插件
 
     ```shell
     sudo apt install -y gnome-shell-extension-user-theme gtk2-engines-pixbuf gtk2-engines-murrine gnome-themes-extra && 
@@ -90,11 +85,46 @@
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 
-11. 安装TeXLive
+10. 安装TeXLive
 
     ```shell
-    sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
-    sudo /media/cdrom/install-tl
+    sudo mount /datas/softwares/texlive2026.iso /media/cdrom && sudo /media/cdrom/install-tl
+    ```
+
+11. 系统设置
+
+    设置locale防止终端警告
+
+    ```shell
+    echo 'LANG="en_US.UTF-8"
+    LANGUAGE="en_US:en"
+    LC_ALL="en_US.UTF-8"' | sudo tee /etc/default/locale && sudo update-locale
+    ```
+
+    设置grub取消选择启动项等待
+
+    ```shell
+    sudo cp /etc/default/grub /etc/default/grub.blk && 
+    sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && 
+    sudo update-grub
+    ```
+
+    设置登录缩放与当前一致
+
+    ```shell
+    sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
+    ```
+
+    配置SSH密钥对
+
+    ```shell
+    ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
+    ```
+
+    设置git本地用户名和邮箱
+
+    ```shell
+    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
     ```
 
 12. Java、go、Cmake、clangd开发环境搭建
@@ -177,49 +207,13 @@
     python3 -m venv ~/.softwares/python_venv
     ```
 
-13. 系统设置
-
-    设置locale防止终端警告
-
-    ```shell
-    echo 'LANG="en_US.UTF-8"
-    LANGUAGE="en_US:en"
-    LC_ALL="en_US.UTF-8"' | sudo tee /etc/default/locale && sudo update-locale
-    ```
-
-    设置grub取消选择启动项等待
-
-    ```shell
-    sudo cp /etc/default/grub /etc/default/grub.blk && 
-    sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && 
-    sudo update-grub
-    ```
-
-    设置登录缩放与当前一致
-
-    ```shell
-    sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
-    ```
-
-    配置SSH密钥对
-
-    ```shell
-    ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
-    ```
-
-    设置git本地用户名和邮箱
-
-    ```shell
-    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
-    ```
-
-14. 拉取个人配置
+13. 拉取个人配置
 
     ```shell
     git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
     ```
 
-15. 设置字体
+14. 设置字体
 
     ```shell
     sudo cp -r /datas/fonts/* /usr/share/fonts/truetype && 
@@ -231,7 +225,7 @@
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
     gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 16'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 15'
     ```
 
     选择安装Twitter Color Emoji
@@ -242,7 +236,7 @@
     sudo fc-cache -f && fc-cache -f
     ```
 
-16. 设置桌面环境
+15. 设置桌面环境
 
     配置vim
 
@@ -275,7 +269,7 @@
     gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
     ```
 
-17. 安装配置oh-my-zsh
+16. 安装配置oh-my-zsh
 
     1.安装oh-my-zsh
 
@@ -305,7 +299,7 @@
     chsh -s $(which zsh)
     ```
 
-18. 安装配置oh-my-rime输入法
+17. 安装配置oh-my-rime输入法
 
     1.下载
 
@@ -321,7 +315,7 @@
     sed -i "s|page_size: 6|page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
     ```
 
-19. 安装Chrome
+18. 安装Chrome
 
     ```shell
     wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome-keyring.gpg > /dev/null
@@ -342,7 +336,7 @@
     sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
     ```
 
-20. 安装VSCode
+19. 安装VSCode
 
     ```shell
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
@@ -362,7 +356,7 @@
     sudo apt install -y code
     ```
 
-21. 安装firefox
+20. 安装firefox
 
     ```shell
     wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg | sudo tee /usr/share/keyrings/mozilla.gpg > /dev/null
@@ -391,7 +385,7 @@
     sudo apt update && sudo apt install -y firefox
     ```
 
-22. Postman安装与配置
+21. Postman安装与配置
 
     ```shell
     tar -zxf /datas/softwares/postman-linux-x64.tar.gz -C ~/.softwares && 

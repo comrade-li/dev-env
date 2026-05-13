@@ -188,7 +188,7 @@
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
-    ln -sf ~/.softwares/java/oracle/jdk-25* ~/.softwares/java/current && 
+    ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
     unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares && 
     mv ~/.softwares/gradle-* ~/.softwares/gradle && 
     tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares && 
@@ -224,8 +224,8 @@
     gsettings set org.gnome.desktop.interface font-hinting 'none' && 
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
-    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
-    gsettings set org.gnome.desktop.interface monospace-font-name 'SFMono Nerd Font 15'
+    gsettings set org.gnome.desktop.interface document-font-name 'Source Sans 3 13' && 
+    gsettings set org.gnome.desktop.interface monospace-font-name 'SF Mono 15'
     ```
 
     选择安装Twitter Color Emoji

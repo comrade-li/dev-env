@@ -224,7 +224,7 @@
     gsettings set org.gnome.desktop.interface font-hinting 'none' && 
     gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 
     gsettings set org.gnome.desktop.interface font-name 'Inter 13' && 
-    gsettings set org.gnome.desktop.interface document-font-name 'Source Sans 3 13' && 
+    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans 13' && 
     gsettings set org.gnome.desktop.interface monospace-font-name 'SF Mono 15'
     ```
 

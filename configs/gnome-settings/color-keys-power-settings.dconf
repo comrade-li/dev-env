@@ -14,12 +14,12 @@ name='gnome-terminal'
 
 [media-keys/custom-keybindings/custom1]
 binding='<Super>f'
-command='firefox -width 2000 -height 1350'
+command='firefox -width 2100 -height 1350'
 name='firefox'
 
 [media-keys/custom-keybindings/custom2]
 binding='<Alt>f'
-command='firefox -width 2000 -height 1350 --private-window'
+command='firefox -width 2100 -height 1350 --private-window'
 name='firefox-private-window'
 
 [media-keys/custom-keybindings/custom3]

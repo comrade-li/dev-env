@@ -40,7 +40,7 @@
     sudo apt autoremove --purge -y && 
     sudo apt update && 
     sudo apt upgrade -y && 
-    sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools iproute2 bind9-dnsutils tcpdump gpg openssl libssl-dev git git-lfs vim tree zsh ibus-rime build-essential binutils linux-headers-amd64 gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tk-dev pkg-config lm-sensors fancontrol i2c-tools
+    sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools iproute2 bind9-dnsutils tcpdump gpg openssl libssl-dev git git-lfs vim tree zsh ibus-rime build-essential libgmp-dev libmpfr-dev libmpc-dev libisl-dev binutils linux-headers-amd64 gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tk-dev pkg-config lm-sensors fancontrol i2c-tools
     ```
 
 5. 安装LLVM

@@ -36,7 +36,7 @@
 4. 卸载无用包、更新包、安装基础包
 
     ```shell
-    sudo apt purge -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan libreoffice-* totem malcontent gnome-tour shotwell gnome-sound-recorder evolution evolution-data-server gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters && 
+    sudo apt purge -y gnome-calendar gnome-contacts gnome-weather gnome-clocks gnome-maps gnome-music simple-scan totem malcontent gnome-tour shotwell gnome-sound-recorder evolution gnome-software gnome-text-editor im-config vim-tiny nano xterm gnome-snapshot gnome-characters gnome-connections libreoffice-* && 
     sudo apt autoremove --purge -y && 
     sudo apt update && 
     sudo apt upgrade -y && 
@@ -85,13 +85,7 @@
     sudo apt install -y gnome-shell-extension-dashtodock
     ```
 
-10. 安装TeXLive
-
-    ```shell
-    sudo mount /datas/softwares/texlive2026.iso /media/cdrom && sudo /media/cdrom/install-tl
-    ```
-
-11. 系统设置
+10. 系统设置
 
     设置locale防止终端警告
 
@@ -121,15 +115,7 @@
     ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
     ```
 
-    设置git本地用户名和邮箱
-
-    ```shell
-    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
-    ```
-
-12. Java、go、Cmake、clangd开发环境搭建
-
-    配置环境变量
+11. Java、go、Cmake、clangd开发环境搭建
 
     ```shell
     echo '
@@ -173,8 +159,6 @@
     export PATH=$PATH:$CARGO_HOME/bin' | tee -a ~/.profile
     ```
 
-    安装
-
     ```shell
     mkdir -p ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares && 
@@ -207,7 +191,17 @@
     python3 -m venv ~/.softwares/python_venv
     ```
 
+12. 安装TeXLive
+
+    ```shell
+    sudo mount /datas/softwares/texlive2026.iso /media/cdrom && sudo /media/cdrom/install-tl
+    ```
+
 13. 拉取个人配置
+
+    ```shell
+    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
+    ```
 
     ```shell
     git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
@@ -241,7 +235,7 @@
     配置vim
 
     ```shell
-    sudo ln -sf ~/Projects/dev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
+    sudo ln -sf ~/Projects/ ev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
     ```
 
     设置头像
@@ -301,13 +295,9 @@
 
 17. 安装配置oh-my-rime输入法
 
-    1.下载
-
     ```shell
     git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
     ```
-
-    2.修改配置
 
     ```shell
     sed -i "s|horizontal: true|horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 

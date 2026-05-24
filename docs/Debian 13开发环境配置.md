@@ -299,10 +299,41 @@
     git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
     ```
 
+    安装万象模型
+
     ```shell
-    sed -i "s|horizontal: true|horizontal: false|g" ~/.config/ibus/rime/ibus_rime.yaml && 
-    sed -i "/^\s\+-\s\+name:\s\+emoji_suggestion/,+2d" ~/.config/ibus/rime/rime_mint.schema.yaml && 
-    sed -i "s|page_size: 6|page_size: 7|g" ~/.config/ibus/rime/rime_mint.schema.yaml
+    wget https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/wanxiang-lts-zh-hans.gram -O ~/.config/ibus/rime/wanxiang-lts-zh-hans.gram
+    ```
+
+    配置
+
+    ```shell
+    echo 'patch:
+      menu:
+      page_size: 7
+
+      "switches/@last":
+        name: emoji_suggestion
+        reset: 0
+        states: [ "😣️","😁️"]
+
+      "grammar/language": wanxiang-lts-zh-hans
+      "grammar/collocation_max_length": 8
+      "grammar/collocation_min_length": 2
+      "grammar/collocation_penalty": -16
+      "grammar/non_collocation_penalty": -8
+      "grammar/weak_collocation_penalty": -100
+      "grammar/rear_penalty": -20
+
+      "translator/contextual_suggestions": true
+      "translator/max_homophones": 7
+      "translator/max_homographs": 7' | tee ~/.config/ibus/rime/rime_mint.custom.yaml
+    ```
+
+    ```shell
+    echo 'patch:
+      style:
+        horizontal: false' | tee ~/.config/ibus/rime/ibus_rime.custom.yaml
     ```
 
 18. 安装Chrome

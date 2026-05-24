@@ -311,8 +311,7 @@
 
     ```shell
     echo 'patch:
-      menu:
-      page_size: 7
+      "menu/page_size": 7
 
       "switches/@last":
         name: emoji_suggestion

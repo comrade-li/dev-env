@@ -237,7 +237,7 @@
     配置vim
 
     ```shell
-    sudo ln -sf ~/Projects/ ev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
+    sudo ln -sf ~/Projects/ev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
     ```
 
     设置头像

@@ -160,7 +160,7 @@
     ```
 
     ```shell
-    mkdir -p ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica && 
+    mkdir -p ~/.softwares/go ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/java/adoptium && 
     tar -zxf /datas/softwares/cmake*.tar.gz -C ~/.softwares && 
     mv ~/.softwares/cmake-* ~/.softwares/cmake && 
     unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares && 
@@ -172,6 +172,8 @@
     tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
     tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
     tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
+    tar -zxf /datas/softwares/OpenJDK21*.tar.gz -C ~/.softwares/java/adoptium && 
+    tar -zxf /datas/softwares/OpenJDK25*.tar.gz -C ~/.softwares/java/adoptium && 
     ln -sf ~/.softwares/java/oracle/jdk-21* ~/.softwares/java/current && 
     unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares && 
     mv ~/.softwares/gradle-* ~/.softwares/gradle && 

@@ -307,6 +307,12 @@
     wget https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/wanxiang-lts-zh-hans.gram -O ~/.config/ibus/rime/wanxiang-lts-zh-hans.gram
     ```
 
+    安装搜狗词库
+
+    ```shell
+    cp ~/Projects/dev-env/configs/dicts/* ~/.config/ibus/rime/dicts/
+    ```
+
     配置
 
     ```shell

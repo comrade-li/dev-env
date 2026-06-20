@@ -11,9 +11,9 @@
     ```shell
     sudo mkdir -p /datas && 
     sudo chown ${USER} /datas && 
-    sudo mount /dev/sda1 /datas && 
+    sudo mount /dev/sda /datas && 
     echo '
-    UUID=bc14161f-d0e7-4474-8b13-6f3ee84488f3     /datas      btrfs   defaults,user     0     0' | sudo tee -a /etc/fstab
+    UUID=3423735e-f5b8-4e70-b3ed-aa67ec474d19     /datas      btrfs   defaults,user     0     0' | sudo tee -a /etc/fstab
     ```
 
 3. 配置源

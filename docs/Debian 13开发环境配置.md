@@ -262,7 +262,7 @@
     dconf load /org/gnome/nautilus/ < ~/Projects/dev-env/configs/gnome-settings/nautilus.dconf && 
     dconf load /org/gtk/gtk4/settings/file-chooser/ < ~/Projects/dev-env/configs/gnome-settings/file-chooser.dconf && 
     dconf load /org/virt-manager/ < ~/Projects/dev-env/configs/gnome-settings/virt-manager.dconf && 
-    gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
+    gsettings set org.gnome.Settings window-state '(1630, 1050, false)'
     ```
 
 16. 安装配置oh-my-zsh

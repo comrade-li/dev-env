@@ -202,11 +202,11 @@
 13. 拉取个人配置
 
     ```shell
-    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
+    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade LiJing"
     ```
 
     ```shell
-    git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
+    git clone git@github.com:comrade-lijing/dev-env.git ~/Projects/dev-env
     ```
 
 14. 设置字体

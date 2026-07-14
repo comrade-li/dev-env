@@ -202,11 +202,11 @@
 13. 拉取个人配置
 
     ```shell
-    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade LiJing"
+    git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"
     ```
 
     ```shell
-    git clone git@github.com:comrade-lijing/dev-env.git ~/Projects/dev-env
+    git clone git@github.com:comrade-li/dev-env.git ~/Projects/dev-env
     ```
 
 14. 设置字体
@@ -240,21 +240,11 @@
     sudo ln -sf ~/Projects/ev-env/configs/.vimrc /root/.vimrc && ln -sf ~/Projects/dev-env/configs/.vimrc ~/.vimrc
     ```
 
-    设置头像
+    设置用户头像、终端、主题、快捷键、禁用Caps
 
     ```shell
-    sudo cp ~/Projects/dev-env/configs/avatars/* /usr/share/pixmaps/faces
-    ```
-
-    设置Terminal
-
-    ```shell
-    dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf
-    ```
-
-    设置颜色、快捷键、禁用Caps
-
-    ```shell
+    sudo cp ~/Projects/dev-env/configs/avatars/* /usr/share/pixmaps/faces && 
+    dconf load /org/gnome/terminal/ < ~/Projects/dev-env/configs/gnome-settings/gnome-terminal-settings.dconf && 
     dconf load /org/gnome/settings-daemon/plugins/ < ~/Projects/dev-env/configs/gnome-settings/color-keys-power-settings.dconf && 
     dconf load /org/gnome/desktop/ < ~/Projects/dev-env/configs/gnome-settings/desktop.dconf && 
     dconf load /org/gnome/mutter/ < ~/Projects/dev-env/configs/gnome-settings/mutter.dconf && 
@@ -270,21 +260,21 @@
     1.安装oh-my-zsh
 
     ```shell
-    git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+    git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
     ```
 
     2.安装插件
 
     ```shell
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+    git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
     ```
 
     ```shell
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
     ```
 
     ```shell
-    git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
+    git clone --depth 1 https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
     ```
 
     3.配置~/.zshrc并更换默认sh为zsh
@@ -295,52 +285,15 @@
     chsh -s $(which zsh)
     ```
 
-17. 安装配置oh-my-rime输入法
+17. 安装配置白霜拼音
 
     ```shell
-    git clone https://github.com/Mintimate/oh-my-rime.git ~/.config/ibus/rime
-    ```
-
-    安装万象模型
-
-    ```shell
-    wget https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/wanxiang-lts-zh-hans.gram -O ~/.config/ibus/rime/wanxiang-lts-zh-hans.gram
-    ```
-
-    安装搜狗词库
-
-    ```shell
-    cp ~/Projects/dev-env/configs/dicts/* ~/.config/ibus/rime/dicts/
-    ```
-
-    配置
-
-    ```shell
-    echo 'patch:
-      "menu/page_size": 7
-
-      "switches/@last":
-        name: emoji_suggestion
-        reset: 0
-        states: [ "😣️","😁️"]
-
-      "grammar/language": wanxiang-lts-zh-hans
-      "grammar/collocation_max_length": 8
-      "grammar/collocation_min_length": 2
-      "grammar/collocation_penalty": -16
-      "grammar/non_collocation_penalty": -8
-      "grammar/weak_collocation_penalty": -100
-      "grammar/rear_penalty": -20
-
-      "translator/contextual_suggestions": true
-      "translator/max_homophones": 7
-      "translator/max_homographs": 7' | tee ~/.config/ibus/rime/rime_mint.custom.yaml
+    git clone --depth 1 https://github.com/gaboolic/rime-frost.git ~/.config/ibus/rime
     ```
 
     ```shell
     echo 'patch:
-      style:
-        horizontal: false' | tee ~/.config/ibus/rime/ibus_rime.custom.yaml
+      "menu/page_size": 6' | tee ~/.config/ibus/rime/rime_frost.custom.yaml
     ```
 
 18. 安装Chrome

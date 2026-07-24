@@ -287,15 +287,14 @@ sed -i 's/plugins=(git)/plugins=(\n  git\n  sudo\n  zsh-completions\n  zsh-autos
 chsh -s $(which zsh)
 ```
 
-## 安装配置白霜拼音
+## 安装配置雾凇拼音
 
 ```shell
-git clone --depth 1 https://github.com/gaboolic/rime-frost.git ~/.config/ibus/rime
+git clone --depth 1 https://github.com/iDvel/rime-ice.git ~/.config/ibus/rime
 ```
 
 ```shell
-echo 'patch:
-    "menu/page_size": 6' | tee ~/.config/ibus/rime/rime_frost.custom.yaml
+sed -i "s|page_size: 5|page_size: 7|g" ~/.config/ibus/rime/default.yaml
 ```
 
 ## 安装常用软件

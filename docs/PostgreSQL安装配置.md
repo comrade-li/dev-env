@@ -1,4 +1,4 @@
-# PostgreSQL环境配置
+# PostgreSQL安装配置
 
 `注意：` 基本Linux环境参考 [Debian Server配置](./Debian%20Server配置.md)
 
@@ -19,14 +19,14 @@ export PATH=$PATH:$PG_HOME/bin' |  sudo tee -a /etc/profile && source /etc/profi
 ### 1.2 添加postgres组和用户
 
 ```shell
-sudo groupadd postgers && 
-sudo useradd -g postgers -d /home/postgres -s /bin/bash postgres && 
+sudo groupadd postgres && 
+sudo useradd -g postgres -s /bin/bash postgres && 
 sudo passwd postgres
 ```
 
 ```shell
 sudo mkdir /home/postgres && 
-sudo chown -R postgres /home/postgres
+sudo chown -R postgres:postgres /home/postgres
 ```
 
 ### 1.3 安装必须软件包
@@ -61,7 +61,8 @@ sudo make install-world-bin
 ### 1.5 配置PG
 
 ```shell
-sudo chown -R postgres $PG_HOME && 
+sudo mkdir -p $PGDATA && 
+sudo chown -R postgres:postgres $PGDATA && 
 su -l postgres -c "initdb"
 ```
 

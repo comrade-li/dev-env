@@ -37,7 +37,7 @@ apt update &&
 apt upgrade -y && 
 apt install -y sudo git vim openssh-server gzip bzip2 gpg openssl libssl-dev curl build-essential cmake gdb autoconf ninja-build python3 python3-venv python3-dev python3-pip lua5.4 tcpdump tcl tcl-dev tk tk-dev pkg-config selinux-basics selinux-utils libselinux1-dev && 
 apt install -y clang-tools clang libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang && 
-apt purge -y vim-tiny nano && 
+apt purge -y vim-tiny nano mariadb-common && 
 apt autoremove --purge -y
 ```
 

@@ -2,4 +2,5 @@
 
 * [Debian 13开发环境配置](./docs/Debian%2013开发环境配置.md)
 * [Debian Server配置](./docs/Debian%20Server配置.md)
-* [PostgreSQL环境配置](./docs/PostgreSQL环境配置.md)
+* [PostgreSQL安装配置](./docs/PostgreSQL安装配置.md)
+* [MySQL安装配置](./docs/MySQL安装配置.md)

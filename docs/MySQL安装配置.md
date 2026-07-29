@@ -73,8 +73,7 @@ LimitNOFILE=10000
 Restart=on-failure
 RestartPreventExitStatus=1
 
-# Always restart when mysqld exits with exit code of 16. This special exit code
-# is used by mysqld for RESTART SQL.
+# Always restart when mysqld exits with exit code of 16. This special exit code is used by mysqld for RESTART SQL.
 RestartForceExitStatus=16
 
 # Set enviroment variable MYSQLD_PARENT_PID. This is required for restart.
@@ -82,8 +81,7 @@ Environment=MYSQLD_PARENT_PID=1' | sudo tee /etc/systemd/system/mysqld.service
 ```
 
 ```shell
-sudo systemctl start mysqld.service && 
-sudo systemctl enable mysqld.service
+sudo systemctl start mysqld.service
 ```
 
 ### 1.8 登录并修改root'@'localhost密码

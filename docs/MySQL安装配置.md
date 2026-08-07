@@ -30,7 +30,7 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /usr/lib/x86_64-linux-gnu/li
 ### 1.4 解压二进制包
 
 ```shell
-sudo tar -xf /shares/mysql-*.tar.xz -C /usr/local && 
+sudo tar -xf /shares/mysql-2*.tar.xz -C /usr/local && 
 sudo mv /usr/local/mysql* /usr/local/mysql && 
 sudo mkdir -p $MYSQL_DATA
 ```
@@ -84,12 +84,14 @@ Environment=MYSQLD_PARENT_PID=1' | sudo tee /etc/systemd/system/mysqld.service
 sudo systemctl start mysqld.service
 ```
 
-### 1.8 登录并修改root'@'localhost密码
+### 1.8 登录并修改root密码
 
 ```shell
 mysql -u root --skip-password
 ```
 
 ```sql
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+UPDATE mysql.user SET host="%" WHERE user='root';
+ALTER USER 'root'@'%' IDENTIFIED BY 'root';
+FLUSH PRIVILEGES;
 ```

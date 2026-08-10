@@ -92,6 +92,7 @@ mysql -u root --skip-password
 
 ```sql
 UPDATE mysql.user SET host="%" WHERE user='root';
+FLUSH PRIVILEGES;
 ALTER USER 'root'@'%' IDENTIFIED BY 'root';
 FLUSH PRIVILEGES;
 ```

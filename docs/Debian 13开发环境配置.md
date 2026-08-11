@@ -269,7 +269,7 @@ sudo dpkg -i /datas/debs/fonts-twemoji-svginot*.deb
 ```shell
 mkdir -p ~/.config/fontconfig && 
 ln -sf ~/Projects/dev-env/configs/fonts.conf ~/.config/fontconfig/fonts.conf && 
-sudo fc-cache -f && fc-cache -f
+sudo fc-cache -f && fc-cache -f && 
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba' && 
 gsettings set org.gnome.desktop.interface font-hinting 'none' && 
 gsettings set org.gnome.desktop.interface font-rgba-order 'rgb' && 

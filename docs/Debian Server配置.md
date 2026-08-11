@@ -71,7 +71,7 @@
     ```shell
     echo '
     export JAVA_HOME=/usr/local/java/current
-    export PATH=$PATH:$JAVA_HOME/bin' | sudo tee -a /etc/profile && 
+    export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile && 
     sudo mkdir -p /usr/local/java && 
     sudo tar -zxf /shares/jdk-21_linux-x64_bin.tar.gz -C /usr/local/java && 
     sudo tar -zxf /shares/jdk-25_linux-x64_bin.tar.gz -C /usr/local/java && 

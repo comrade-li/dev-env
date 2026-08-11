@@ -1,14 +1,14 @@
-# gcc编译安装
+# GCC编译安装
 
 说明：以最新版本gcc16.2为例, 根据具体需求安装具体版本
 
-1. 设置gcc版本
+1. 设置基础变量
 
     ```shell
     export WORK_DIR="$HOME/Downloads" && 
     export DEP_SOFT="$WORK_DIR/dep_soft" && 
     export GCC_VERSION="16.2.0" && 
-    export GCC_PREFIX="$HOME/.softwares/gcc-${GCC_VERSION}"
+    export GCC_PREFIX="$HOME/.softwares/gcc-$GCC_VERSION"
     ```
 
 2. 解压源码
@@ -26,7 +26,7 @@
 
     ```shell
     cd $WORK_DIR/gmp-* && mkdir build_dir && cd $_ && 
-    ../configure --prefix=$DEP_SOFT/gmp && 
+    ../configure --host=x86_64-pc-linux-gnu --prefix=$DEP_SOFT/gmp && 
     make -j$(nproc) && 
     make install
     ```
@@ -35,7 +35,7 @@
 
     ```shell
     cd $WORK_DIR/mpfr-* && mkdir build_dir && cd $_ && 
-    ../configure --prefix=$DEP_SOFT/mpfr --with-gmp=$DEP_SOFT/gmp && 
+    ../configure --host=x86_64-pc-linux-gnu --prefix=$DEP_SOFT/mpfr --with-gmp=$DEP_SOFT/gmp && 
     make -j$(nproc) && 
     make install
     ```
@@ -44,7 +44,7 @@
 
     ```shell
     cd $WORK_DIR/mpc-* && mkdir build_dir && cd $_ && 
-    ../configure --prefix=$DEP_SOFT/mpc --with-gmp=$DEP_SOFT/gmp --with-mpfr=$DEP_SOFT/mpfr && 
+    ../configure --host=x86_64-pc-linux-gnu --prefix=$DEP_SOFT/mpc --with-gmp=$DEP_SOFT/gmp --with-mpfr=$DEP_SOFT/mpfr && 
     make -j$(nproc) && 
     make install
     ```
@@ -53,7 +53,7 @@
 
     ```shell
     cd $WORK_DIR/gettext-* && mkdir build_dir && cd $_ && 
-    ../configure --prefix=$DEP_SOFT/gettext --disable-java --with-mpfr=$DEP_SOFT/mpfr &&  
+    ../configure --host=x86_64-pc-linux-gnu --prefix=$DEP_SOFT/gettext --disable-java --with-mpfr=$DEP_SOFT/mpfr &&  
     make -j$(nproc) && 
     make install
     ```
@@ -62,7 +62,7 @@
 
     ```shell
     cd $WORK_DIR/isl-* && mkdir build_dir && cd $_ && 
-    ../configure --prefix=$DEP_SOFT/isl --with-gmp=$DEP_SOFT/gmp --with-clang-exec-prefix=/usr/bin/clang --with-python_exec_prefix=/usr/bin/python3 && 
+    ../configure --host=x86_64-pc-linux-gnu --prefix=$DEP_SOFT/isl --with-gmp=$DEP_SOFT/gmp --with-clang-exec-prefix=/usr/bin/clang --with-python_exec_prefix=/usr/bin/python3 && 
     make -j$(nproc) && 
     make install
     ```
@@ -86,4 +86,13 @@
     --with-target-system-zlib && 
     make -j$(nproc) && 
     make install
+    ```
+
+9. 环境变量
+
+    ```shell
+    echo "
+    export PATH=$GCC_PREFIX/bin:\$PATH
+    export LD_LIBRARY_PATH=$GCC_PREFIX/lib64:\$LD_LIBRARY_PATH" | tee -a ~/.profile && 
+    source ~/.zshrc
     ```

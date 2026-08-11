@@ -13,7 +13,7 @@ export PGDATA=$PG_HOME/data
 export LD_LIBRARY=$PG_HOME/lib
 export PGPORT=5432
 export LANG=en_US.UTF-8
-export PATH=$PATH:$PG_HOME/bin' |  sudo tee -a /etc/profile && source /etc/profile
+export PATH=$PG_HOME/bin:$PATH' |  sudo tee -a /etc/profile && source /etc/profile
 ```
 
 ### 1.2 添加postgres组和用户

@@ -127,38 +127,38 @@ UUID=3423735e-f5b8-4e70-b3ed-aa67ec474d19     /datas      btrfs   defaults,user 
     export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 
     # Cmake
-    export PATH=$PATH:~/.softwares/cmake/bin
+    export PATH=~/.softwares/cmake/bin:$PATH
 
     # clangd server
-    export PATH=$PATH:~/.softwares/clangd/bin
+    export PATH=~/.softwares/clangd/bin:$PATH
 
     # go
     export GOROOT=~/.softwares/go/current
-    export PATH=$PATH:$GOROOT/bin
+    export PATH=$GOROOT/bin:$PATH
 
     # JDK
     export JAVA_HOME=~/.softwares/java/current
-    export PATH=$PATH:$JAVA_HOME/bin
+    export PATH=$JAVA_HOME/bin:$PATH
 
     # gradle
-    export PATH=$PATH:~/.softwares/gradle/bin
+    export PATH=~/.softwares/gradle/bin:$PATH
 
     # maven
-    export PATH=$PATH:~/.softwares/maven/bin
+    export PATH=~/.softwares/maven/bin:$PATH
 
     # mvnd
-    export PATH=$PATH:~/.softwares/mvnd/bin
+    export PATH=~/.softwares/mvnd/bin:$PATH
 
     # visualvm
-    export PATH=$PATH:~/.softwares/visualvm/bin
+    export PATH=~/.softwares/visualvm/bin:$PATH
 
     # jmeter
-    export PATH=$PATH:~/.softwares/jmeter/bin
+    export PATH=~/.softwares/jmeter/bin:$PATH
 
     # custom rust install path
     export CARGO_HOME=~/.softwares/rust/cargo
     export RUSTUP_HOME=~/.softwares/rust/rustup
-    export PATH=$PATH:$CARGO_HOME/bin' | tee -a ~/.profile
+    export PATH=$CARGO_HOME/bin:$PATH' | tee -a ~/.profile
     ```
 
     ```shell

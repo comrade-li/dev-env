@@ -10,7 +10,7 @@
 echo '
 export MYSQL_HOME=/usr/local/mysql
 export MYSQL_DATA=$MYSQL_HOME/data
-export PATH=$PATH:$MYSQL_HOME/bin' |  sudo tee -a /etc/profile && source /etc/profile
+export PATH=$MYSQL_HOME/bin:$PATH' |  sudo tee -a /etc/profile && source /etc/profile
 ```
 
 ### 1.2 添加mysql组和用户

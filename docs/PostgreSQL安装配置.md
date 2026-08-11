@@ -10,7 +10,8 @@
 echo '
 export PG_HOME=/usr/local/pgsql-18
 export PGDATA=$PG_HOME/data
-export LD_LIBRARY=$PG_HOME/lib
+export LD_LIBRARY_PATH=$PG_HOME/lib
+export MANPATH=$PG_HOME/share/man:$MANPATH
 export PGPORT=5432
 export LANG=en_US.UTF-8
 export PATH=$PG_HOME/bin:$PATH' |  sudo tee -a /etc/profile && source /etc/profile
@@ -22,11 +23,6 @@ export PATH=$PG_HOME/bin:$PATH' |  sudo tee -a /etc/profile && source /etc/profi
 sudo groupadd postgres && 
 sudo useradd -g postgres -s /bin/bash postgres && 
 sudo passwd postgres
-```
-
-```shell
-sudo mkdir /home/postgres && 
-sudo chown -R postgres:postgres /home/postgres
 ```
 
 ### 1.3 安装必须软件包
@@ -42,7 +38,30 @@ sudo apt install -y flex bison perl libperl-dev libedit-dev libreadline8t64 libr
 ```shell
 tar -zxf /shares/postgresql-18.*.tar.gz -C ~ && 
 cd ~/postgresql-18.* && 
-./configure --prefix=$PG_HOME --enable-nls='en' --with-perl --with-python --with-tcl --with-llvm LLVM_CONFIG='/usr/bin/llvm-config' --with-lz4 --with-zstd --with-ssl=openssl --with-gssapi --with-ldap --with-pam --with-systemd --with-uuid=ossp --with-libcurl --with-libnuma --with-liburing --with-libxml --with-libxslt --with-selinux CFLAGS='-O2 -pipe'
+mkdir build_dir && cd $_ && 
+../configure \
+--prefix=$PG_HOME \
+--enable-nls='en' \
+--with-perl \
+--with-python \
+--with-tcl \
+--with-llvm \
+LLVM_CONFIG='/usr/bin/llvm-config' \
+--with-lz4 \
+--with-zstd \
+--with-ssl=openssl \
+--with-gssapi \
+--with-ldap \
+--with-pam \
+--with-uuid=ossp \
+--with-libcurl \
+--with-libnuma \
+--with-liburing \
+--with-libxml \
+--with-libxslt \
+--with-selinux \
+--with-systemd \
+CFLAGS='-O2 -pipe'
 ```
 
 2.编译

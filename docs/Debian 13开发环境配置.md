@@ -50,7 +50,7 @@ sudo apt install -y curl wget openssh-server iputils-arping traceroute net-tools
 ### 2.3 安装LLVM
 
 ```shell
-sudo apt install -y llvm llvm-dev llvm-runtime clang clang-tools clang-format clang-tidy python3-clang lldb lld libc++-dev libc++-dev libomp-dev
+sudo apt install -y llvm llvm-runtime llvm-dev libllvm-ocaml-dev clang clang-tools libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 python3-clang clang-format clang-tidy lld liblldb-dev lldb libomp-dev libomp5
 ```
 
 ### 2.4 安装并配置KVM
@@ -115,23 +115,7 @@ sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
 
 ### 3.4 TeXLive、Java、go、rust、C/C++、python开发环境搭建
 
-#### 3.4.1 TexLive环境搭建
-
-```shell
-echo '
-# TeX Live
-export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH' | tee -a ~/.profile
-```
-
-```shell
-sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
-sudo /media/cdrom/install-tl && 
-sudo umount /media/cdrom
-```
-
-#### 3.4.2 Java开发环境(jdk、maven、mvnd、gradle、visualvm、jmeter)
+#### 3.4.1 Java开发环境(jdk、maven、mvnd、gradle、visualvm、jmeter)
 
 ```shell
 echo '
@@ -184,19 +168,20 @@ tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares &&
 mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter
 ```
 
-#### 3.4.3 go开发环境
+#### 3.4.2 go开发环境
 
 ```shell
 echo '
 # go
 export GOROOT=~/.softwares/go/current
 export PATH=$GOROOT/bin:$PATH' | tee -a ~/.profile && 
+mkdir -p ~/.softwares/go && 
 tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
 tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
 ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current
 ```
 
-#### 3.4.4 rust开发环境
+#### 3.4.3 rust开发环境
 
 ```shell
 echo '
@@ -211,7 +196,7 @@ source ~/.profile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-#### 3.4.5 C/C++开发环境(cmake、clangd)
+#### 3.4.4 C/C++开发环境(cmake、clangd)
 
 ```shell
 echo '
@@ -225,10 +210,26 @@ unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares &&
 mv ~/.softwares/clangd_* ~/.softwares/clangd
 ```
 
-#### 3.4.6 配置python venv环境
+#### 3.4.5 配置python venv环境
 
 ```shell
 python3 -m venv ~/.softwares/python_venv
+```
+
+#### 3.4.6 TexLive环境搭建
+
+```shell
+echo '
+# TeX Live
+export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH' | tee -a ~/.profile
+```
+
+```shell
+sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
+sudo /media/cdrom/install-tl && 
+sudo umount /media/cdrom
 ```
 
 ### 3.5 配置SSH密钥对、git
@@ -304,13 +305,9 @@ gsettings set org.gnome.Settings window-state '(1700, 1100, false)'
 
 ### 4.5 安装配置oh-my-zsh
 
-#### 4.5.1 安装oh-my-zsh
-
 ```shell
 git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 ```
-
-#### 4.5.2 安装插件
 
 ```shell
 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
@@ -323,8 +320,6 @@ git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-m
 ```shell
 git clone --depth 1 https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
 ```
-
-#### 4.5.3 配置~/.zshrc并更换默认sh为zsh
 
 ```shell
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && 
@@ -410,7 +405,7 @@ Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla
 ```shell
 sudo apt purge -y firefox-esr && 
 sudo apt autoremove --purge -y && 
-rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution && 
+sudo rm -rf ~/.face ~/.face.icon ~/.mozilla ~/.cache/mozilla ~/.bash_history ~/.config/evolution ~/.cache/evolution ~/.local/share/evolution /usr/share/applications/vim.desktop /usr/share/applications/ocaml.desktop && 
 sudo apt update && 
 sudo apt install -y firefox
 ```

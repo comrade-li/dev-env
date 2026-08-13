@@ -89,6 +89,14 @@ sudo dpkg -i /datas/debs/yaru-theme-*.deb &&
 sudo apt install -y gnome-shell-extension-dashtodock
 ```
 
+### 2.8 安装TexLive
+
+```shell
+sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
+sudo /media/cdrom/install-tl && 
+sudo umount /media/cdrom
+```
+
 ## 3. 系统配置
 
 ### 3.1 设置系统语言
@@ -113,9 +121,25 @@ sudo update-grub
 sudo cp ~/.config/monitors.xml /var/lib/gdm3/.config
 ```
 
-### 3.4 TeXLive、Java、go、rust、C/C++、python开发环境搭建
+### 3.4 配置ssh
 
-#### 3.4.1 Java开发环境(jdk、maven、mvnd、gradle、visualvm、jmeter)
+```shell
+ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
+```
+
+### 3.5 TeXLive、Java、go、rust、C/C++、python、git开发环境搭建
+
+#### 3.5.1 TexLive环境搭建
+
+```shell
+echo '
+# TeX Live
+export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH' | tee -a ~/.profile
+```
+
+#### 3.5.2 Java开发环境(jdk、maven、mvnd、gradle、visualvm、jmeter)
 
 ```shell
 echo '
@@ -137,17 +161,13 @@ echo '
 # maven
 export PATH=~/.softwares/maven/bin:$PATH
 # mvnd
-export PATH=~/.softwares/mvnd/bin:$PATH' | tee -a ~/.profile && 
+export PATH=~/.softwares/mvnd/bin:$PATH
+# gradle
+export PATH=~/.softwares/gradle/bin:$PATH' | tee -a ~/.profile && 
 tar -zxf /datas/softwares/apache-maven*.tar.gz -C ~/.softwares && 
 mv ~/.softwares/apache-maven-* ~/.softwares/maven && 
 tar -zxf /datas/softwares/maven-mvnd*.tar.gz -C ~/.softwares && 
-mv ~/.softwares/maven-mvnd-* ~/.softwares/mvnd
-```
-
-```shell
-echo '
-# gradle
-export PATH=~/.softwares/gradle/bin:$PATH' | tee -a ~/.profile && 
+mv ~/.softwares/maven-mvnd-* ~/.softwares/mvnd && 
 unzip -qq /datas/softwares/gradle*.zip -d ~/.softwares && 
 mv ~/.softwares/gradle-* ~/.softwares/gradle
 ```
@@ -155,20 +175,16 @@ mv ~/.softwares/gradle-* ~/.softwares/gradle
 ```shell
 echo '
 # visualvm
-export PATH=~/.softwares/visualvm/bin:$PATH' | tee -a ~/.profile && 
-unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
-mv ~/.softwares/visualvm* ~/.softwares/visualvm
-```
-
-```shell
-echo '
+export PATH=~/.softwares/visualvm/bin:$PATH
 # jmeter
 export PATH=~/.softwares/jmeter/bin:$PATH' | tee -a ~/.profile && 
+unzip -qq /datas/softwares/visualvm*.zip -d ~/.softwares && 
+mv ~/.softwares/visualvm* ~/.softwares/visualvm && 
 tar -zxf /datas/softwares/apache-jmeter*.tgz -C ~/.softwares && 
 mv ~/.softwares/apache-jmeter* ~/.softwares/jmeter
 ```
 
-#### 3.4.2 go开发环境
+#### 3.5.3 go开发环境
 
 ```shell
 echo '
@@ -181,7 +197,7 @@ tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$
 ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current
 ```
 
-#### 3.4.3 rust开发环境
+#### 3.5.4 rust开发环境
 
 ```shell
 echo '
@@ -196,7 +212,7 @@ source ~/.profile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-#### 3.4.4 C/C++开发环境(cmake、clangd)
+#### 3.5.5 C/C++开发环境(cmake、clangd)
 
 ```shell
 echo '
@@ -210,33 +226,13 @@ unzip -qq /datas/softwares/clangd-linux-*.zip -d ~/.softwares &&
 mv ~/.softwares/clangd_* ~/.softwares/clangd
 ```
 
-#### 3.4.5 配置python venv环境
+#### 3.5.6 配置python venv环境
 
 ```shell
 python3 -m venv ~/.softwares/python_venv
 ```
 
-#### 3.4.6 TexLive环境搭建
-
-```shell
-echo '
-# TeX Live
-export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH' | tee -a ~/.profile
-```
-
-```shell
-sudo mount /datas/softwares/texlive2026.iso /media/cdrom && 
-sudo /media/cdrom/install-tl && 
-sudo umount /media/cdrom
-```
-
-### 3.5 配置SSH密钥对、git
-
-```shell
-ssh-keygen -t rsa -b4096 -C "comrade.lijing@gmail.com" && cat ~/.ssh/id_rsa.pub
-```
+#### 3.5.7 配置git环境
 
 ```shell
 git config --global user.email "comrade.lijing@gmail.com" && git config --global user.name "Comrade Li"

@@ -191,9 +191,9 @@ echo '
 export GOROOT=~/.softwares/go/current
 export PATH=$GOROOT/bin:$PATH' | tee -a ~/.profile && 
 mkdir -p ~/.softwares/go && 
+tar -zxf /datas/softwares/go1.27*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.27*")")"/" && 
 tar -zxf /datas/softwares/go1.26*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.26*")")"/" && 
-tar -zxf /datas/softwares/go1.25*.tar.gz -C ~/.softwares/go --transform="s/go/"$(basename -s .tar.gz "$(find /datas/softwares -name "go1.25*")")"/" && 
-ln -sf ~/.softwares/go/go1.26* ~/.softwares/go/current
+ln -sf ~/.softwares/go/go1.27* ~/.softwares/go/current
 ```
 
 #### 3.5.4 rust开发环境

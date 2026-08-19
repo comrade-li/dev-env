@@ -82,7 +82,7 @@ sudo make install-world-bin
 ```shell
 sudo mkdir -p $PGDATA && 
 sudo chown -R postgres:postgres $PGDATA && 
-su -l postgres -c "initdb"
+su postgres -c "initdb"
 ```
 
 修改远程连接配置
@@ -123,5 +123,5 @@ sudo systemctl start postgresql.service
 ### 1.7 修改postgres用户密码
 
 ```sql
-su -l postgres -c "psql -c \"ALTER USER postgres PASSWORD 'postgres';\""
+su postgres -c "psql -c \"ALTER USER postgres PASSWORD 'postgres';\""
 ```

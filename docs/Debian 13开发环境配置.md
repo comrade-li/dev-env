@@ -145,13 +145,15 @@ echo '
 # JDK
 export JAVA_HOME=~/.softwares/java/current
 export PATH=$JAVA_HOME/bin:$PATH' | tee -a ~/.profile && 
-mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/java/adoptium && 
+mkdir -p ~/.softwares/java/oracle ~/.softwares/java/liberica ~/.softwares/java/adoptium ~/.softwares/java/graalvm && 
 tar -zxf /datas/softwares/jdk-21*.tar.gz -C ~/.softwares/java/oracle && 
 tar -zxf /datas/softwares/jdk-25*.tar.gz -C ~/.softwares/java/oracle && 
 tar -zxf /datas/softwares/bellsoft-jdk21*.tar.gz -C ~/.softwares/java/liberica && 
 tar -zxf /datas/softwares/bellsoft-jdk25*.tar.gz -C ~/.softwares/java/liberica && 
 tar -zxf /datas/softwares/OpenJDK21*.tar.gz -C ~/.softwares/java/adoptium && 
 tar -zxf /datas/softwares/OpenJDK25*.tar.gz -C ~/.softwares/java/adoptium && 
+tar -zxf /datas/softwares/graalvm-jdk-21*.tar.gz -C ~/.softwares/java/graalvm && 
+tar -zxf /datas/softwares/graalvm-jdk-25*.tar.gz -C ~/.softwares/java/graalvm && 
 ln -sf ~/.softwares/java/oracle/jdk-25* ~/.softwares/java/current
 ```
 

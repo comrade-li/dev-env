@@ -378,43 +378,7 @@ sudo apt update &&
 sudo apt install -y code
 ```
 
-### 5.3 安装配置docker与docker-compose
-
-```shell
-wget -qO- https://download.docker.com/linux/debian/gpg -o sudo tee /usr/share/keyrings/docker.gpg > /dev/null
-```
-
-```shell
-echo 'Types: deb
-URIs: https://download.docker.com/linux/debian
-Suites: trixie 
-Components: stable
-Architectures: amd64
-Signed-By: /usr/share/keyrings/docker.gpg' | sudo tee /etc/apt/sources.list.d/docker.sources
-```
-
-```shell
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-```shell
-sudo systemctl enable docker.service && 
-sudo systemctl enable containerd.service
-```
-
-```shell
-sudo usermod -aG docker $USER
-```
-
-```shell
-sudo curl -SL https://github.com/docker/compose/releases/download/v5.5.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-```
-
-```shell
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-### 5.4 安装firefox
+### 5.3 安装firefox
 
 ```shell
 wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg | sudo tee /usr/share/keyrings/mozilla.gpg > /dev/null
@@ -444,7 +408,7 @@ sudo apt update &&
 sudo apt install -y firefox
 ```
 
-### 5.5 Postman安装与配置
+### 5.4 Postman安装与配置
 
 ```shell
 tar -zxf /datas/softwares/postman-linux-x64.tar.gz -C ~/.softwares && 

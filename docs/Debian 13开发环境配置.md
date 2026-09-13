@@ -308,14 +308,6 @@ git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 ```
 
 ```shell
-git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-```
-
-```shell
-git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
-```
-
-```shell
 git clone --depth 1 https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/plugins/zsh-completions
 ```
 

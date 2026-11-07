@@ -75,8 +75,8 @@ echo '
 export JAVA_HOME=/usr/local/java/current
 export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile && 
 sudo mkdir -p /usr/local/java && 
-sudo tar -zxf /shares/jdk-21_linux-x64_bin.tar.gz -C /usr/local/java && 
-sudo tar -zxf /shares/jdk-25_linux-x64_bin.tar.gz -C /usr/local/java && 
+sudo tar -zxf /shares/jdk-21*.tar.gz -C /usr/local/java && 
+sudo tar -zxf /shares/jdk-25*.tar.gz -C /usr/local/java && 
 sudo ln -s /usr/local/java/jdk-21* /usr/local/java/current && 
 source /etc/profile
 ```
